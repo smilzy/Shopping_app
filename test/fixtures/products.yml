@@ -4,7 +4,7 @@ one:
   title: MyString
   description: MyText
   image_url: MyString
-  price: 9.99
+  price: 99.99
 
 two:
   title: MyString
@@ -13,7 +13,7 @@ two:
   price: 9.99
   
 xiaomi:
-  title: Xiaomi prosto z Chin
-  description: Oezu jaki dobry i tani
+  title: Xiaomi
+  description: Oezu jaki dobry i tani - prosto z Chin
   image_url: xiaomi.png
   price: 99.50
