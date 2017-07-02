@@ -11,3 +11,9 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+  
+xiaomi:
+  title: Xiaomi prosto z Chin
+  description: Oezu jaki dobry i tani
+  image_url: xiaomi.png
+  price: 99.50
