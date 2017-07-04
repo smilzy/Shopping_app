@@ -78,12 +78,12 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_index_url, notice: 'Line item was successfully updated.' }
-        format.js {@current_item = @line_item}
+        format.html { redirect_to store_index_url, notice: 'Przedmiot usunięty z koszyka.' }
+        format.js { @current_item = @line_item }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.js {@current_item = @line_item}
+        format.js { @current_item = @line_item }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
