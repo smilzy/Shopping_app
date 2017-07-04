@@ -82,6 +82,25 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
         }
       }
     }
+    
+    // Shopping cart
+    form, div {
+      display: inline;
+    }
+    
+    input {
+      font-size: small;
+    }
+    
+    #cart {
+      font-size: smaller;
+      
+      table {
+        border-top: 1px dotted #595;
+        border-bottom: 1px dotted #595;
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 

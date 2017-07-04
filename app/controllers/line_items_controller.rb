@@ -31,11 +31,12 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart }
+        format.html { redirect_to store_index_url }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.json { render json: @line_item.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -61,7 +62,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     
     respond_to do |format|
-      format.html { redirect_to @line_item.cart, notice: 'Przedmiot usunięty z koszyka.' }
+      format.html { redirect_to store_index_url, notice: 'Przedmiot usunięty z koszyka.' }
       format.json { head :no_content }
     end
   end
