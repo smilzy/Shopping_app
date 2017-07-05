@@ -21,6 +21,11 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
+    
+  if charge["paid"] == true
+    Cart.destroy(session[:cart_id])
+    session[:cart_id] = nil
+  end
   
   rescue Stripe::CardError => e
     flash[:error] = e.message

@@ -1,7 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
-    <%= yield %>
+  <head>
+    <title>Smart GSM Online</title>
+    <%= csrf_meta_tags %>
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all',
+    'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link href="https://fonts.googleapis.com/css?family=Asap:400,700" rel="stylesheet">
+  </head>
+
+  <body class="<%= controller.controller_name %>">
+    <div id="banner">
+      <i class="fa fa-mobile" aria-hidden="true"></i>
+      <span class="logo-text">AK-SMART GSM</span>
+      <span class="title"><%= @page_title %></span>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <div id="cart">
+          <% if @cart %>
+            <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+              <%= render @cart %>
+            <% end %>
+          <% end %>
+        </div>
+        
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/">FAQ</a></li>
+          <li><a href="/">Nowości</a></li>
+          <li><a href="/">Kontakt</a></li>
+        </ul>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
