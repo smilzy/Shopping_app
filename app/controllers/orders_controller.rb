@@ -32,9 +32,9 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       
-      if @order.save && @order.pay_type == 'Karta kredytowa'
+      if @order.pay_type == 'Karta kredytowa'
         format.html { redirect_to new_charge_url }
-      elsif @order.save
+      elsif @order.save && @order.pay_type != "Karta kredytowa"
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         format.html { redirect_to store_index_url,
