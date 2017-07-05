@@ -104,6 +104,41 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
   }
 }
 
+// ORDER
+.depot_form {
+  fieldset {
+    legend {
+    background: rgba(0,0,0,0.1);
+    font-family: sans-serif;
+    padding: 0.2em 1em;
+    margin-left: 10.5em;
+    }
+    div {
+    margin-bottom: 0.3em;
+    }
+  }
+  form {
+    label {
+    width: 10em;
+    float: left;
+    text-align: right;
+    padding-top: 0.2em;
+    margin-right: 0.1em;
+    display: block;
+    }
+    select, textarea, input {
+    margin-left: 0.5em;
+    min-width: 320px;
+    }
+    .submit {
+    margin-left: 2em;
+    }
+    br {
+    display: none
+    }
+  }
+}
+
 @media all and (max-width: 800px) {
   #columns {
     flex-direction: column-reverse;

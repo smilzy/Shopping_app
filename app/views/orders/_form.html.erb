@@ -12,26 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label "Imię" %>
+    <%= f.text_field :name, size: 40 %>
   </div>
 
   <div class="field">
-    <%= f.label :address %>
-    <%= f.text_area :address %>
+    <%= f.label "Adres" %>
+    <%= f.text_area :address, rows: 3, cols: 40 %>
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.label "E-mail" %>
+    <%= f.text_field :email, size: 40 %>
   </div>
 
   <div class="field">
-    <%= f.label :pay_type %>
-    <%= f.number_field :pay_type %>
+    <%= f.label "Sposób zapłaty" %>
+    <%= f.select :pay_type, Order.pay_types.keys,
+                        prompt: 'Wybierz metodę płatności' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.label " " %>
+    <%= f.submit 'Złóż zamówienie' %>
   </div>
 <% end %>
