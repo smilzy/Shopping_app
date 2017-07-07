@@ -6,7 +6,8 @@
     <td class="total_cell"><%= number_to_currency(cart.total_price, locale: :pl) %></td>
   </tr>
 </table>
-
-<%= button_to "Do kasy", new_order_path, method: :get, remote: true %>
+<div id="kasa">
+  <%= button_to "Do kasy", new_order_path, method: :get, remote: true %>
+</div>
 <%= button_to 'Wyczyść koszyk', cart, method: :delete,
 data: {confirm: 'Czy na pewno chcesz usunąć zawartość koszyka?' } %>
