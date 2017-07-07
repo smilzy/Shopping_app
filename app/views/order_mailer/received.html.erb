@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <h1><%= "#{ @order.name } - Zamówienie" %></h1>
+    <h2>Dziękujemy za zakupy w naszym sklepie.</h2>>
+    <p>Twoje zamówienie:</p>
+    <%= render @order.line_items -%>
+    <p>Po wysłaniu przez nas zamówienia otrzymasz e-mail z
+          informacjami o przesyłce.</p>
+  </body>
+</html>
