@@ -28,6 +28,7 @@ class ChargesController < ApplicationController
     if charge["paid"] == true
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
+      OrderMailer.received(@order).deliver_later
     end
   
     rescue Stripe::CardError => e
