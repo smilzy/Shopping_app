@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.findy_by(name: params[:name])
+    user = User.find_by(name: params[:name])
     if user.try(:authenticate, params[:password])
       session[:user_id] = user.id
       redirect_to admin_url
