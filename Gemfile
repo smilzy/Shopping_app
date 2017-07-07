@@ -22,6 +22,8 @@ gem 'font-awesome-sass'
 gem 'stripe'
 gem 'figaro'
 
+# Use Paperclip for image upload
+gem 'paperclip'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
