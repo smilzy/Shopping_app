@@ -16,7 +16,7 @@ default from: 'GSM Shop <shop@gsm.com>'
   #
   #   en.order_mailer.shipped.subject
   #
-  def shipped
+  def shipped(order)
     @order = order
 
     mail to: order.email, subject: 'Informacje o przesyłce | Sklep GSM'
