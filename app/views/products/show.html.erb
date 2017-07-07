@@ -11,8 +11,13 @@
 </p>
 
 <p>
+  <% if @product.avatar? %>
+  <strong>Avatar:</strong>
+    <%= image_tag(@product.avatar) %>
+  <% else %>
   <strong>Image url:</strong>
-  <%= @product.image_url %>
+    <%= image_tag(@product.image_url) %>
+  <% end %>
 </p>
 
 <p>
