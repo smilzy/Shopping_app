@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authorize
+  skip_before_action :authorize, only: [:new, :create]
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: [:new]
@@ -37,8 +37,9 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       
-      if @order.pay_type == 'Karta kredytowa' && @order.save
+      if @order.save && @order.pay_type == "Karta kredytowa"
         format.html { redirect_to new_charge_url }
+        format.json { render :show, status: :created, location: @order }
       elsif @order.save && @order.pay_type != "Karta kredytowa"
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
