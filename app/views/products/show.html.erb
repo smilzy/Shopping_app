@@ -7,7 +7,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @product.description %>
+  <%= sanitize(@product.description) %>
 </p>
 
 <p>
@@ -24,6 +24,7 @@
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if session[:user_id] %>
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+<% end %>

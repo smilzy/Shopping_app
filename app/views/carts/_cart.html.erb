@@ -1,13 +1,22 @@
 <h2>Twój koszyk</h2>
 <table>
-  <%= render(cart.line_items) %>
-  <tr class="total_line">
-    <td colspan="2">Suma:</td>
-    <td class="total_cell"><%= number_to_currency(cart.total_price, locale: :pl) %></td>
-  </tr>
+  <div class="cart_items">
+    <%= render(cart.line_items) %>
+  </div>
+  <div class="price">
+    <tr class="total_line">
+      <td>Suma:</td>
+      <td class="total_cell"><%= number_to_currency(cart.total_price, locale: :pl) %></td>
+    </tr>
+  </div>
 </table>
-<div id="kasa">
-  <%= button_to "Do kasy", new_order_path, method: :get, remote: true %>
+
+<div class="block">
+  <div id="kasa">
+  <%= button_to "Do kasy", new_order_path, method: :get, remote: true,
+                                    class: "btn btn-xs btn-primary" %>
+  </div>
+  <%= button_to 'Wyczyść koszyk', cart, method: :delete,
+  data: { confirm: 'Czy na pewno chcesz usunąć zawartość koszyka?' },
+                                      class: "btn btn-xs btn-danger" %>
 </div>
-<%= button_to 'Wyczyść koszyk', cart, method: :delete,
-data: { confirm: 'Czy na pewno chcesz usunąć zawartość koszyka?' } %>

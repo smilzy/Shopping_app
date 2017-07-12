@@ -21,7 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'font-awesome-sass'
 gem 'stripe'
 gem 'figaro'
-
+gem 'bootstrap-sass'
 # Use Paperclip for image upload
 gem 'paperclip'
 # Use jquery as the JavaScript library

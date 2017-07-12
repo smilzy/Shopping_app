@@ -15,14 +15,15 @@
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 
 body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 
 #banner {
   position: relative;
-  min-height: 40px;
+  min-height: 70px;
   background: rgba(0,0,0,.1);
-  padding: 10px;
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
   text-align: center;
@@ -57,9 +58,10 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
   display: none;
 }
 
-#columns {
+.row {
   background: #FFF;
   display: flex;
+  margin: 0 -15px 0 0;
 
   #main {
     padding: 1em;
@@ -67,8 +69,8 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     flex: 1;
   }
 
-  #side {
-    padding: 1em 2em;
+  .sidebar {
+    padding: 10px;
     background: rgba(0,0,0,.1);
 
     ul {
@@ -76,6 +78,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 
       li {
         list-style: none;
+        margin-left: -10px;
 
         a {
           font-size: small;
@@ -84,9 +87,6 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     }
     
     // Shopping cart
-    form, div {
-      display: inline;
-    }
     
     input {
       font-size: small;
@@ -94,11 +94,29 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     
     #cart {
       font-size: smaller;
+      display: inline-block;
+      background: rgba(196,86,0,.5);
+      border-radius: 3px;
+      padding: 0 20px 20px 20px;
+      margin-left: 20px;
+      margin-bottom: 10px;
       
       table {
         border-top: 1px dotted #595;
         border-bottom: 1px dotted #595;
         margin-bottom: 10px;
+      }
+      .item_price, .total_line {
+        text-align: right;
+      }
+      
+      .total_line .total_cell {
+        font-weight: bold;
+        border-top: 1px solid red;
+      }
+      .delete-link a {
+        color: red;
+        text-decoration: none;
       }
     }
   }
@@ -111,10 +129,6 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     background: rgba(0,0,0,0.1);
     font-family: sans-serif;
     padding: 0.2em 1em;
-    margin-left: 10.5em;
-    }
-    div {
-    margin-bottom: 0.3em;
     }
   }
   form {
