@@ -95,16 +95,17 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     #cart {
       font-size: smaller;
       display: inline-block;
-      background: rgba(196,86,0,.5);
+      background: rgba(190,0,0,.15);
       border-radius: 3px;
       padding: 0 20px 20px 20px;
-      margin-left: 20px;
       margin-bottom: 10px;
+      width: 100%;
       
       table {
-        border-top: 1px dotted #595;
-        border-bottom: 1px dotted #595;
+        border-top: 1px dotted rgb(196,86,0);
+        border-bottom: 1px dotted rgb(196,86,0);
         margin-bottom: 10px;
+        width: 100%;
       }
       .item_price, .total_line {
         text-align: right;
@@ -114,9 +115,12 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
         font-weight: bold;
         border-top: 1px solid red;
       }
-      .delete-link a {
-        color: red;
-        text-decoration: none;
+      .delete-link .button_to {
+        float: right;
+      }
+      #kasa {
+        float: left;
+        margin-right: 10px;
       }
     }
   }
