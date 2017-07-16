@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.product {
+  margin: 20px;
+  a{
+    color: black;
+    &:hover {
+    text-decoration: none;
+    background-color: transparent;
+    color: black;
+    }
+  }
+}
+
 .store {
   h1 {
     margin: 0;

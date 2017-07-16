@@ -24,6 +24,10 @@ body {
   padding-top: 50px;
 }
 
+.notshown {
+  display: none;
+}
+
 .navbar {
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
@@ -106,7 +110,6 @@ body {
 }
 
 .row {
-  margin: 0 0 -15px 0;
 
   .main {
     padding: 1em;
@@ -129,6 +132,10 @@ body {
 
         a {
           font-size: 2em;
+          &:hover {
+            text-decoration: none;
+            background-color: transparent;
+          }
         }
       }
     }

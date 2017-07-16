@@ -1,19 +1,14 @@
-<div class="row menu">
+<div class="row menu text-center">
   <div class="col-xs-12">
+    <h2 style="margin-top: 5px;">Lista przedmiotów</h2>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><%= link_to 'Telefony', store_index_path %></li>
-      <li><a href="/">Nowości</a></li>
-      <li><a href="/">Kontakt</a></li>
-    </ul>
-    <% if session[:user_id] %>
-      <ul>
-        <li><%= link_to 'Orders', orders_path %></li>
-        <li><%= link_to 'Products', products_path %></li>
-        <li><%= link_to 'Users', users_path %></li>
-        <li><%= link_to "Logout", logout_path, 
-                class: "btn btn-lg btn-default", method: :delete %></li>
-      </ul>
+    <% if @products %>
+      <% @products.each do |product| %>
+        <div class="sideitem">
+          <li style="background-color: <%= cycle("#f3f3f3", "none") %>"><%= link_to product.title, product_path(id: product.id) %></h3>
+        </div>
+      <% end %>
     <% end %>
+    </ul>
   </div>
 </div>
