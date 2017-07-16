@@ -15,3 +15,10 @@
 //= require jquery-ui
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  $('#navcart').click(function(event){
+    event.preventDefault();
+    $('#cart').slideToggle(500);
+  });
+});  

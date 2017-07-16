@@ -43,6 +43,13 @@ body {
       background-color: transparent;
     }
   }
+  #navcart {
+    background-color:#b0c7e6;
+    a {
+      color: #fff;
+      font-weight: bold;
+    }
+  }
 }
 
 #notice {
@@ -56,6 +63,18 @@ body {
 
 #notice:empty {
   display: none;
+}
+
+// CART!!!!!!!!!
+#cart {
+  position: absolute;
+  left: -225px;
+  background-color: #b0c7e6;
+  width: 300px;
+  padding: 10px;
+  border-radius: 3px 0 3px 3px;
+  border: solid 1px;
+  border-top: none;
 }
 
 .row {

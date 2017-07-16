@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to '<i class="fa fa-mobile" aria-hidden="true"></i>'.html_safe, store_index_path %>
-      <span class="logo-text"><%= link_to 'AK-SMART GSM', store_index_path %></span>
+      <span class="logo-text"><%= link_to 'AK-SMART', store_index_path %></span>
       <span class="title"><%= @page_title %></span>
     </div>
     <div class="collapse navbar-collapse" id="main-nav-collapse">
@@ -27,6 +27,13 @@
         <li><%= link_to 'Telefony', store_index_path %></li>
         <li><a href="/">Nowości</a></li>
         <li><a href="/">Kontakt</a></li>
+        <li id="navcart"><%= link_to "Koszyk", @cart, remote: true %>
+        <% if @cart %>
+          <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+            <%= render @cart %>
+          <% end %>
+        <% end %>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>
