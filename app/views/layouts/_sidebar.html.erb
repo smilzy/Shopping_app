@@ -4,18 +4,22 @@
   <% end %>
 <% end %>
 
-<ul>
-  <li><a href="/">Home</a></li>
-  <li><%= link_to 'Telefony', store_index_path %></li>
-  <li><a href="/">Nowości</a></li>
-  <li><a href="/">Kontakt</a></li>
-</ul>
-<% if session[:user_id] %>
-  <ul>
-    <li><%= link_to 'Orders', orders_path %></li>
-    <li><%= link_to 'Products', products_path %></li>
-    <li><%= link_to 'Users', users_path %></li>
-    <li><%= link_to "Logout", logout_path, 
-            class: "btn btn-lg btn-default", method: :delete %></li>
-  </ul>
-<% end %>
+<div class="row menu">
+  <div class="col-xs-12">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><%= link_to 'Telefony', store_index_path %></li>
+      <li><a href="/">Nowości</a></li>
+      <li><a href="/">Kontakt</a></li>
+    </ul>
+    <% if session[:user_id] %>
+      <ul>
+        <li><%= link_to 'Orders', orders_path %></li>
+        <li><%= link_to 'Products', products_path %></li>
+        <li><%= link_to 'Users', users_path %></li>
+        <li><%= link_to "Logout", logout_path, 
+                class: "btn btn-lg btn-default", method: :delete %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

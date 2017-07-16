@@ -15,10 +15,14 @@
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
+
+.navbar {
+  margin: 0;
+}
 
 #banner {
   position: relative;
@@ -59,11 +63,9 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 }
 
 .row {
-  background: #FFF;
-  display: flex;
-  margin: 0 -15px 0 0;
+  margin: 0 0 -15px 0;
 
-  #main {
+  .main {
     padding: 1em;
     background: white;
     flex: 1;
@@ -72,16 +74,18 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
   .sidebar {
     padding: 10px;
     background: rgba(0,0,0,.1);
-
+        
     ul {
       padding: 0;
 
       li {
         list-style: none;
         margin-left: -10px;
+        padding: 5px;
+        text-align: center;
 
         a {
-          font-size: small;
+          font-size: 2em;
         }
       }
     }
@@ -100,6 +104,10 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
       padding: 0 20px 20px 20px;
       margin-bottom: 10px;
       width: 100%;
+      
+      .fa {
+        margin-right: 10px;
+      }
       
       table {
         border-top: 1px dotted rgb(196,86,0);
@@ -121,6 +129,9 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
       #kasa {
         float: left;
         margin-right: 10px;
+      }
+      .btn-danger {
+        float: right;
       }
     }
   }
@@ -154,21 +165,5 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
     br {
     display: none
     }
-  }
-}
-
-@media all and (max-width: 800px) {
-  #columns {
-    flex-direction: column-reverse;
-  }
-}
-
-@media all and (max-width: 500px) {
-  #banner {
-    height: 1em;
-  }
-
-  #banner .title {
-    display: none;
   }
 }
