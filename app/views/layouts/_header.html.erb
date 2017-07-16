@@ -1,9 +1,33 @@
-<header class="navbar navbar-top">
-  <div class="container">
-    <div id="banner">
-      <i class="fa fa-mobile" aria-hidden="true"></i>
-      <span class="logo-text">AK-SMART GSM</span>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+  <div class='container'>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to '<i class="fa fa-mobile" aria-hidden="true"></i>'.html_safe, store_index_path %>
+      <span class="logo-text"><%= link_to 'AK-SMART GSM', store_index_path %></span>
       <span class="title"><%= @page_title %></span>
     </div>
+    <div class="collapse navbar-collapse" id="main-nav-collapse">
+      <% if session[:user_id] %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Orders', orders_path %></li>
+          <li><%= link_to 'Products', products_path %></li>
+          <li><%= link_to 'Users', users_path %></li>
+          <li><%= link_to "Logout", logout_path, 
+                  class: "btn btn-xs btn-default", method: :delete %></li>
+      <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Home</a></li>
+        <li><%= link_to 'Telefony', store_index_path %></li>
+        <li><a href="/">Nowości</a></li>
+        <li><a href="/">Kontakt</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
   </div>
-</header>
+</nav>

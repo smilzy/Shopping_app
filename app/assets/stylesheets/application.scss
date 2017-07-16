@@ -20,32 +20,28 @@
 
 body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 
-.navbar {
-  margin: 0;
+body {
+  padding-top: 50px;
 }
 
-#banner {
-  position: relative;
-  min-height: 70px;
-  background: rgba(0,0,0,.1);
+.navbar {
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
-  text-align: center;
 
   .fa {
-    position: absolute;
-    left: 20px;
     top: 0;
-    font-size: 1.7em;
+    font-size: 1.3em;
     color: red;
   }
-  .logo-text {
+  .logo-text a {
     font-family: 'Asap', sans-serif;
-    font-size: 1.7em;
-    position: absolute;
-    left: 60px;
-    top: 12px;
+    font-size: 1.3em;
     font-weight: bold;
+    color: #fff;
+    &:hover {
+      text-decoration: none;
+      background-color: transparent;
+    }
   }
 }
 
