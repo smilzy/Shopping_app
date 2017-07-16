@@ -75,6 +75,34 @@ body {
   border-radius: 3px 0 3px 3px;
   border: solid 1px;
   border-top: none;
+  .fa {
+        margin-right: 10px;
+      }
+      
+  table {
+    border-top: 1px dotted rgb(196,86,0);
+    border-bottom: 1px dotted rgb(196,86,0);
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .item_price, .total_line {
+    text-align: right;
+  }
+  
+  .total_line .total_cell {
+    font-weight: bold;
+    border-top: 1px solid red;
+  }
+  .delete-link .button_to {
+    float: right;
+  }
+  #kasa {
+    float: left;
+    margin-right: 10px;
+  }
+  .btn-danger {
+    float: right;
+  }  
 }
 
 .row {
@@ -109,45 +137,6 @@ body {
     
     input {
       font-size: small;
-    }
-    
-    #cart {
-      font-size: smaller;
-      display: inline-block;
-      background: rgba(190,0,0,.15);
-      border-radius: 3px;
-      padding: 0 20px 20px 20px;
-      margin-bottom: 10px;
-      width: 100%;
-      
-      .fa {
-        margin-right: 10px;
-      }
-      
-      table {
-        border-top: 1px dotted rgb(196,86,0);
-        border-bottom: 1px dotted rgb(196,86,0);
-        margin-bottom: 10px;
-        width: 100%;
-      }
-      .item_price, .total_line {
-        text-align: right;
-      }
-      
-      .total_line .total_cell {
-        font-weight: bold;
-        border-top: 1px solid red;
-      }
-      .delete-link .button_to {
-        float: right;
-      }
-      #kasa {
-        float: left;
-        margin-right: 10px;
-      }
-      .btn-danger {
-        float: right;
-      }
     }
   }
 }

@@ -16,8 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
-  $('#navcart').click(function(event){
+$(document).on('turbolinks:load', function() {
+  $('#navcart').on('click',function(event){
     event.preventDefault();
     $('#cart').slideToggle(500);
   });
