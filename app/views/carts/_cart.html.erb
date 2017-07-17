@@ -1,22 +1,26 @@
 <h2 class="text-center"><i class="fa fa-shopping-cart" aria-hidden="true" style="display: inline-block;"></i> Twój koszyk</h2>
-<table>
-  <div class="cart_items">
-    <%= render(cart.line_items) %>
+<% if cart.line_items.any? %>
+  <table>
+    <div class="cart_items">
+      <%= render(cart.line_items) %>
+    </div>
+    <div class="price">
+      <tr class="total_line">
+        <td colspan="2">Suma:</td>
+        <td class="total_cell"><%= number_to_currency(cart.total_price, locale: :pl) %></td>
+      </tr>
+    </div>
+  </table>
+  
+  <div class="block">
+    <div id="kasa">
+    <%= button_to "Do kasy", new_order_path, method: :get, remote: true,
+                                      class: "btn btn-xs btn-primary" %>
+    </div>
+    <%= button_to 'Wyczyść koszyk', cart, method: :delete,
+    data: { confirm: 'Czy na pewno chcesz usunąć zawartość koszyka?' },
+                                        class: "btn btn-xs btn-danger" %>
   </div>
-  <div class="price">
-    <tr class="total_line">
-      <td colspan="2">Suma:</td>
-      <td class="total_cell"><%= number_to_currency(cart.total_price, locale: :pl) %></td>
-    </tr>
-  </div>
-</table>
-
-<div class="block">
-  <div id="kasa">
-  <%= button_to "Do kasy", new_order_path, method: :get, remote: true,
-                                    class: "btn btn-xs btn-primary" %>
-  </div>
-  <%= button_to 'Wyczyść koszyk', cart, method: :delete,
-  data: { confirm: 'Czy na pewno chcesz usunąć zawartość koszyka?' },
-                                      class: "btn btn-xs btn-danger" %>
-</div>
+<% else %>
+<h4 class="text-center">Twój koszyk jest pusty.</h3>
+<% end %>

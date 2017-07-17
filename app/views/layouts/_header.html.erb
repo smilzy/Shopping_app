@@ -27,7 +27,7 @@
         <li><%= link_to 'Abc', store_index_path %></li>
         <li><%= link_to 'Telefony', store_index_path %></li>
         <li><%= link_to 'Abc', store_index_path %></li>
-        <li id="navcart"><%= link_to "Koszyk", @cart, remote: true %>
+        <li><%= link_to "Koszyk", @cart, remote: true, id: "navcart" %>
         <% if @cart %>
           <div id="cart" class="notshown"><%= render @cart %></div>
         <% end %>
