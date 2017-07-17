@@ -5,20 +5,24 @@
 <% cache @products do %>
   <% @products.each do |product| %>
     <% cache product do %>
-      <div class="product">
-        <div class="row", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
+      <div class="product", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
+        <div class="row">
           <div class="col-xs-12 text-center">
-            <% if product.avatar? %>
-              <%= image_tag(product.avatar) %>
-            <% else %>
-              <%= link_to(image_tag(product.image_url), product_path(id: product.id)) %>
-            <% end %>
-            <h3><%= link_to product.title, product_path(id: product.id) %></h3>
-            <%= sanitize(product.description) %>
-            <div class="price_line">
-              <span class="price"><%= number_to_currency(product.price, locale: :pl) %></span>
-              <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
-              remote: true, class: "btn btn-small btn-default" %>
+            <div class="thumbnail">
+              <% if product.avatar? %>
+                <%= image_tag(product.avatar) %>
+              <% else %>
+                <%= link_to(image_tag(product.image_url), product_path(id: product.id)) %>
+              <% end %>
+            </div>
+            <div class="description">
+              <h3><%= link_to product.title, product_path(id: product.id) %></h3>
+              <%= sanitize(product.description) %>
+              <div class="price_line">
+                <span class="price"><%= number_to_currency(product.price, locale: :pl) %></span>
+                <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
+                remote: true, class: "btn btn-small btn-default" %>
+              </div>
             </div>
           </div>
         </div>

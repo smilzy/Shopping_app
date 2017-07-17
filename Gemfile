@@ -22,6 +22,7 @@ gem 'font-awesome-sass'
 gem 'stripe'
 gem 'figaro'
 gem 'bootstrap-sass'
+gem 'hirb'
 # Use Paperclip for image upload
 gem 'paperclip'
 # Use jquery as the JavaScript library
