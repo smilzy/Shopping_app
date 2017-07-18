@@ -2,13 +2,17 @@
 
 <h1 class="text-center" style="margin: 0">Katalog produktów</h1>
 
+<div class="row">
 <% cache @products do %>
   <% @products.each do |product| %>
     <% cache product do %>
-      <div class="row">
-        <div class="product", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
-          <div class="col-xs-12 text-center">
-            <div class="thumbnail">
+      
+        <div class="products">
+          <div class="col-xs-4 col-lg-4 text-center">
+            
+            <div class="jedenprodukt", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
+              
+            <div class="thumbnail group">
               <% if product.avatar? %>
                 <%= link_to(image_tag(product.avatar), product_path(id: product.id)) %>
               <% else %>
@@ -18,15 +22,23 @@
             <div class="description">
               <h3><%= link_to product.title, product_path(id: product.id) %></h3>
               <%= sanitize(product.description) %>
-              <div class="price_line">
-                <span class="price"><%= number_to_currency(product.price, locale: :pl) %></span>
-                <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
-                remote: true, class: "btn btn-small btn-default" %>
+              <div class="row">
+                <div class="price_line col-xs-12 col-sm-6">
+                  <span class="price"><%= number_to_currency(product.price, locale: :pl) %></span>
+                </div>
+                <div class="add_to_basket col-xs-12 col-sm-6">
+                  <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
+                  remote: true, class: "btn btn-small btn-default" %>
+                </div>
               </div>
             </div>
+            
+            </div>
+            
           </div>
         </div>
-      </div>
+      
     <% end %>
   <% end %>
 <% end %>
+</div>

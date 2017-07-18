@@ -24,5 +24,5 @@ Product.create!(title: 'Nokia 3310',
       <em>Nokia 3310 - unbreakable</em> 
       Herp derp.
       </p>},
-  image_url: 'nokia.jpg',
+  image_url: 'nokia_3310.jpeg',
   price: 99.00)
