@@ -2,13 +2,14 @@
   <div class="col-xs-12">
     <h2 style="margin-top: 5px;">Lista przedmiotów</h2>
     <ul>
-    <% if @products %>
-      <% @products.each do |product| %>
-        <div class="sideitem">
-          <li style="background-color: <%= cycle("#f3f3f3", "none") %>"><%= link_to product.title, product_path(id: product.id) %></h3>
-        </div>
+      <% @productsAll = Product.all %>
+      <% if @productsAll %>
+        <% @productsAll.each do |product| %>
+          <div class="sideitem">
+            <li style="background-color: <%= cycle("#f3f3f3", "none") %>"><%= link_to product.title, product_path(id: product.id) %></h3>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
     </ul>
   </div>
 </div>
