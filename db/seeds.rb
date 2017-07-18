@@ -37,3 +37,13 @@ Product.create!(title: 'Motorola Nexus',
   image_url: 'Nexus.png',
   price: 1499.00)
 # . . .
+
+Product.create!(title: 'Sample Product',
+  description:
+    %{<p>
+      <em>Sample Product </em> 
+      Description
+      </p>},
+  image_url: 'placeholder240x240.png',
+  price: 999.99)
+# . . .
