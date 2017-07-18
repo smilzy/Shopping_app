@@ -24,7 +24,7 @@ $(document).on('turbolinks:load', function() {
   });
 });  
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $('#list').click(function(event){
     event.preventDefault();$('.products .columns').removeClass('col-xs-4 col-lg-4 grid');
     $('.products .columns').addClass('col-xs-12 col-lg-12 list');});
