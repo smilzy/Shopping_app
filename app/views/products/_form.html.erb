@@ -11,30 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <div id="avatar">
+  <div id="avatar form-group">
     <%= f.label :avatar %>
     <% if product.avatar? %>
       <%= image_tag(product.avatar) %>
     <% end %>
-    <%= f.file_field :avatar %>
+    <p>Wrzuć plik lub podaj link do obrazka z Internetu:</p>
+    <%= f.text_field :avatar, class: "form-control" %>
+    <%= f.file_field :avatar, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :price %>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, class: "form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="actions form-group">
     <%= f.submit %>
   </div>
 <% end %>
