@@ -18,17 +18,16 @@ class Product < ApplicationRecord
                     default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
-
-  def qntupd(id)
-    current_item = Product.find(id)
-
-    if current_item.quantity > 1
-      current_item.quantity -= 1
-    else
-      current_item.quantity = 10
-    end
-
-    current_item
+ 
+  def quantity_update(product, qty)
+  
+      if product.quantity-qty > 0
+        product.quantity -= qty
+      else
+        product.quantity = 10
+      end
+    product.save
+    # end
   end
     
   private

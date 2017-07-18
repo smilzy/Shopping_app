@@ -34,6 +34,11 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+    @order.line_items.each do |i|
+      qty = i.quantity
+      product = Product.find(i.product_id)
+      product.quantity_update(product, qty)
+    end
     
     respond_to do |format|
       
@@ -41,8 +46,6 @@ class OrdersController < ApplicationController
         format.html { redirect_to new_charge_url }
         format.json { render :show, status: :created, location: @order }
       elsif @order.save && @order.pay_type != "Karta kredytowa"
-        # @product = Product.find(@order.line_items.first.product_id)
-        # @product.qntupd(@product.id)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderMailer.received(@order).deliver_later
