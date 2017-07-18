@@ -26,3 +26,14 @@ Product.create!(title: 'Nokia 3310',
       </p>},
   image_url: 'nokia_3310.jpeg',
   price: 99.00)
+# . . .
+
+Product.create!(title: 'Motorola Nexus',
+  description:
+    %{<p>
+      <em>Motorola Nexus </em> 
+      Nexus Nexus Nexus.
+      </p>},
+  image_url: 'Nexus.png',
+  price: 1499.00)
+# . . .
