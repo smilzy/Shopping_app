@@ -20,7 +20,7 @@
             
             <div class="jedenprodukt text-center", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
               
-            <div class="thumbnail group">
+            <div class="thumbnail">
               <% if product.avatar? %>
                 <%= link_to(image_tag(product.avatar), product_path(id: product.id)) %>
               <% else %>
