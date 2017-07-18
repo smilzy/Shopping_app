@@ -2,15 +2,23 @@
 
 <h1 class="text-center" style="margin: 0">Katalog produktów</h1>
 
+<div class="well well-sm">
+    <strong>Category Title</strong>
+    <div class="btn-group">
+        <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+        </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+            class="glyphicon glyphicon-th"></span>Grid</a>
+    </div>
+</div>
 <div class="row">
 <% cache @products do %>
   <% @products.each do |product| %>
     <% cache product do %>
       
         <div class="products">
-          <div class="col-xs-4 col-lg-4 text-center">
+          <div class="col-xs-4 col-lg-4 columns">
             
-            <div class="jedenprodukt", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
+            <div class="jedenprodukt text-center", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
               
             <div class="thumbnail group">
               <% if product.avatar? %>
@@ -23,12 +31,12 @@
               <h3><%= link_to product.title, product_path(id: product.id) %></h3>
               <%= sanitize(product.description) %>
               <div class="row">
-                <div class="price_line col-xs-12 col-sm-6">
+                <div class="price_line col-xs-5 col-xs-offset-1">
                   <span class="price"><%= number_to_currency(product.price, locale: :pl) %></span>
                 </div>
-                <div class="add_to_basket col-xs-12 col-sm-6">
+                <div class="add_to_basket col-xs-5">
                   <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
-                  remote: true, class: "btn btn-small btn-default" %>
+                  remote: true, class: "btn btn-sm btn-default" %>
                 </div>
               </div>
             </div>

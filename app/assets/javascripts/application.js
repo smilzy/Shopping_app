@@ -23,3 +23,12 @@ $(document).on('turbolinks:load', function() {
     $('#cart').slideToggle(500);
   });
 });  
+
+$(document).ready(function() {
+  $('#list').click(function(event){
+    event.preventDefault();$('.products .columns').removeClass('col-xs-4 col-lg-4 grid');
+    $('.products .columns').addClass('col-xs-12 col-lg-12 list');});
+  $('#grid').click(function(event){
+    event.preventDefault();$('.products .columns').removeClass('col-xs-12 col-lg-12 list');
+    $('.products .columns').addClass('col-xs-4 col-lg-4 grid');});
+});
