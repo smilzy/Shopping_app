@@ -10,7 +10,7 @@
           <div class="col-xs-12 text-center">
             <div class="thumbnail">
               <% if product.avatar? %>
-                <%= image_tag(product.avatar) %>
+                <%= link_to(image_tag(product.avatar), product_path(id: product.id)) %>
               <% else %>
                 <%= link_to(image_tag(product.image_url), product_path(id: product.id)) %>
               <% end %>
