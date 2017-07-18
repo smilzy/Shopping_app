@@ -35,6 +35,7 @@
         </p>
       </div>
       <div class="col-xs-6">
+        <p>Na magazynie: <%= @product.quantity %></p>
         <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: @product),
                     remote: true, class: "btn btn-lg btn-default btn-block" %>
       </div>

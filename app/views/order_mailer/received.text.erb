@@ -4,6 +4,10 @@ Dziękujemy za zakupy w naszym sklepie.
 
 Twoje zamówienie:
 
-<%= render @order.line_items -%>
+  <% @order.line_items.each do |item| %>
+      <td><%= item.quantity %>&times;</td>
+      <td><%= item.product.title %></td>
+      <td class="item_price"><%= number_to_currency(item.total_price, locale: :pl) %></td>
+  <% end %>
 
 Po wysłaniu przez nas zamówienia otrzymasz e-mail z informacjami o przesyłce.

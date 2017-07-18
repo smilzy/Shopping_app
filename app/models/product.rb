@@ -19,7 +19,18 @@ class Product < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
 
-  
+  def qntupd(id)
+    current_item = Product.find(id)
+
+    if current_item.quantity > 1
+      current_item.quantity -= 1
+    else
+      current_item.quantity = 10
+    end
+
+    current_item
+  end
+    
   private
   
     # ensure that there are no line items referencing this product

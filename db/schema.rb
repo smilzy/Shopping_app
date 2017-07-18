@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707213900) do
+ActiveRecord::Schema.define(version: 20170718144336) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -43,12 +43,13 @@ ActiveRecord::Schema.define(version: 20170707213900) do
     t.text     "description"
     t.string   "image_url"
     t.decimal  "price",               precision: 8, scale: 2
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "quantity",                                    default: 1
   end
 
   create_table "users", force: :cascade do |t|

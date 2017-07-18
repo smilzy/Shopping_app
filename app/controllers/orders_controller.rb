@@ -41,6 +41,8 @@ class OrdersController < ApplicationController
         format.html { redirect_to new_charge_url }
         format.json { render :show, status: :created, location: @order }
       elsif @order.save && @order.pay_type != "Karta kredytowa"
+        # @product = Product.find(@order.line_items.first.product_id)
+        # @product.qntupd(@product.id)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         OrderMailer.received(@order).deliver_later

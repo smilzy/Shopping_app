@@ -2,8 +2,15 @@
 <h2>Dziękujemy za zakupy w naszym sklepie.</h2>>
 <p>Twoje zamówienie:</p>
 <table>
-  <tr><th colspan="2">Ilość</th><th>Przedmiot</th></tr>
-  <%= render @order.line_items -%>
+  <tr><th>Ilość</th><th>Przedmiot</th><th>Cena</th></tr>
+  <% @order.line_items.each do |item| %>
+    <tr>
+      <td><%= item.quantity %>&times;</td>
+      <td><%= item.product.title %></td>
+      <td class="item_price"><%= number_to_currency(item.total_price, locale: :pl) %></td>
+    </tr>
+  <% end %>
+
 </table>
 <p>Po wysłaniu przez nas zamówienia otrzymasz e-mail z
       informacjami o przesyłce.</p>
