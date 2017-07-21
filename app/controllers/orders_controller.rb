@@ -33,12 +33,13 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.add_line_items_from_cart(@cart)
-    @order.line_items.each do |i|
+    @cart.line_items.each do |i|
       qty = i.quantity
       product = Product.find(i.product_id)
       product.quantity_update(product, qty)
     end
+    @order.add_line_items_from_cart(@cart)
+    # możliwe że trzeba dać to pozycję wyżej i zmienić na @cart.line_it... żeby nie stworzyło wcześniej ordera :P 
     
     respond_to do |format|
       

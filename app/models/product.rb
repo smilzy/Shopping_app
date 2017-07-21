@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   
   validates :title, :description, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :title, uniqueness: true
   # validates :image_url, allow_blank: true, format: {
   #   with:   %r{\.(gif|jpg|png)\Z}i,
@@ -20,14 +21,14 @@ class Product < ApplicationRecord
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
  
   def quantity_update(product, qty)
-  
-      if product.quantity-qty > 0
-        product.quantity -= qty
-      else
-        product.quantity = 10
-      end
-    product.save
-    # end
+    if product.quantity-qty > 0
+      product.quantity -= qty
+      product.save
+    else
+      errors.add(:order, 'Brak takiej ilości towaru na magazynie.')# i to nizej!! #
+      # throw :abort
+    end
+    product
   end
     
   private
