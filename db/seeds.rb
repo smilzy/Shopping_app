@@ -1,3 +1,4 @@
+Product.delete_all
 
 (1..2).each do |i|
   Product.create!(title: "Samsung #{i}",
