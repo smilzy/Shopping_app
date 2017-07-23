@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
       elsif @order.save && @order.pay_type != "Karta kredytowa"
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        OrderMailer.received(@order).deliver_later
+        OrderMailer.received(@order).deliver
         format.html { redirect_to store_index_url,
                       notice: 'Zamówienie zostało złożone.' }
         format.json { render :show, status: :created, location: @order }

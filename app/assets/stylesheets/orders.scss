@@ -10,3 +10,29 @@
     margin: 13px;
   }
 }
+
+.order-summary {
+  border-radius: 5px;
+  border: 1px solid #e3e3e3;
+  background-color: #dde9f9;
+  
+  .items {
+    margin-top: 20px;
+    a {
+      text-decoration: none;
+      color: #000;
+      &:visited {
+        color: #000;
+      }
+      &:hover {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
+  .order-sum {
+    border-top: 1px solid red;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+}

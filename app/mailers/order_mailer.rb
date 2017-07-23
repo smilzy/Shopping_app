@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-default from: 'GSM Shop <shop@gsm.com>'
+default from: 'GSM Shop <noreply@example.com>'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -7,7 +7,7 @@ default from: 'GSM Shop <shop@gsm.com>'
   #
   def received(order)
     @order = order
-
+    
     mail to: order.email, subject: 'Potwierdzenie zamówienia w Sklepie GSM'
   end
 
