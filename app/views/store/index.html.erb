@@ -67,7 +67,7 @@
       <% end %>
     <% end %>
   <% end %>
-  <div class="floatright" style="float: right;">
-    <%= will_paginate(@products, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-lg') %>
+  <div class="col-xs-12">
+    <%= will_paginate(@products, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-lg', style: 'float: right;') %>
   </div>
 </div>
