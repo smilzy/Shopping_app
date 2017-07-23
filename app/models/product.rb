@@ -21,11 +21,11 @@ class Product < ApplicationRecord
   validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 2.megabytes
  
   def quantity_update(product, qty)
-    if product.quantity-qty > 0
+    if product.quantity-qty >= 0
       product.quantity -= qty
       product.save
     else
-      errors.add(:order, 'Brak takiej ilości towaru na magazynie.')# i to nizej!! #
+      errors.add(:base, 'Brak takiej ilości towaru na magazynie.')
       # throw :abort
     end
     product
@@ -46,5 +46,8 @@ class Product < ApplicationRecord
         image_url = avatar.name
       end
     end
-  
+    
+    def self.search(search)
+      where("title LIKE ?", "%#{search}%") 
+    end
 end

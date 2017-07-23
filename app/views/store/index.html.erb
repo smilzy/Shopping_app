@@ -5,13 +5,28 @@
 <div class="well well-sm">
   <strong>Układ:</strong>
   <div class="btn-group">
-      <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-      </span>Lista</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-          class="glyphicon glyphicon-th"></span>Siatka</a>
+    <a href="#" id="list" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-th-list"></span>Lista
+    </a> 
+    <a href="#" id="grid" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-th"></span>Siatka
+    </a>
   </div>
+  <div class="search-products" style="float: right;">
+    <%= form_tag(store_index_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Wyszukaj produkt" %>
+      <%= submit_tag "Wyszukaj", :name => nil, class: "btn btn-default" %>
+    <% end %>
+  </div>
+
 </div>
 
 <div class="row">
+  <% if @products.blank? %>
+    <div class="container">
+      <h4>Nie znaleziono produktów zawierających w nazwie: <%= params[:search] %>.</h4>
+    </div>
+  <% end %>
   <% cache @products do %>
     <% @products.each do |product| %>
       <% cache product do %>
@@ -33,14 +48,15 @@
                 <div class="row prodfooter">
                   <div class="price_line col-xs-12 col-md-6">
                     <span class="price"><strong><%= number_to_currency(product.price, locale: :pl) %></strong></span>
+                    <p><%= product.quantity %> szt.</p>
                   </div>
                   <div class="add_to_basket col-xs-12 col-md-6 col-md-offset--1">
                     <% if product.quantity > 0 %>
                       <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
-                      remote: true, class: "btn btn-sm btn-default" %>
+                      remote: true, class: "btn btn-sm btn-primary" %>
                     <% else %>
-                      <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
-                      remote: true, class: "btn btn-sm btn-default disabled" %>
+                      <%= button_to 'Produkt niedostępny', line_items_path(product_id: product),
+                      class: "btn btn-sm btn-default disabled", disabled: true %>
                     <% end %>
                   </div>
                 </div>
