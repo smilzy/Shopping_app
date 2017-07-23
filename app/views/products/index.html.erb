@@ -1,38 +1,65 @@
-
 <p id="notice"><%= notice %></p> 
 
 <h1>Products</h1>
 
-<table>
-<% @products.each do |product| %>
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+<div class="well well-sm">
+  <strong>Układ:</strong>
+  <div class="btn-group">
+    <a href="#" id="list" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-th-list"></span>Lista
+    </a> 
+    <a href="#" id="grid" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-th"></span>Siatka
+    </a>
+  </div>
+  <div class="search-products" style="float: right;">
+    <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Wyszukaj produkt" %>
+      <%= submit_tag "Wyszukaj", :name => nil, class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
 
-    <td>
-      <% if product.avatar? %>
-        <%= image_tag(product.avatar, class: 'list_image') %>
-      <% else %>
-        <%= image_tag(product.image_url, class: 'list_image') %>
-      <% end %>
-    </td>
-
-    <td class="list_description">
-      <dl>
-        <dt><%= product.title %></dt>
-        <dd><%= truncate(strip_tags(product.description),
-               length: 80) %></dd>
-      </dl>
-    </td>
-
-    <td class="list_actions">
-      <%= link_to 'Show', product %><br/>
-      <%= link_to 'Edit', edit_product_path(product) %><br/>
-      <%= link_to 'Destroy', product, method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-    </td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New product', new_product_path %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to "<span class='glyphicon glyphicon-plus'></span> Dodaj produkt"
+        .html_safe, new_product_path, class: 'form-control btn btn-success',
+        style: 'color: #fff' %>
+  </div>
+  <% @products.each do |product| %>
+    <div class="products">
+      <div class="col-xs-4 col-lg-4 columns">
+        <div class="jedenprodukt text-center", style="background-color: <%= cycle("#f3f3f3", "#fff") %>">
+          <div class="thumbnail">
+            <% if product.avatar? %>
+              <%= link_to(image_tag(product.avatar), product_path(id: product.id)) %>
+            <% else %>
+              <%= link_to(image_tag(product.image_url), product_path(id: product.id)) %>
+            <% end %>
+          </div>
+          <div class="description">
+            <div class="information">
+              <h3><%= link_to product.title, product_path(id: product.id) %></h3>
+              <%= sanitize(product.description) %>
+            </div>
+            <div class="row prodfooter">
+              <div class="price_line col-xs-12 col-lg-12">
+                <span class="price"><strong><%= number_to_currency(product.price, locale: :pl) %></strong></span>
+                <p><%= product.quantity %> szt.</p>
+              </div>
+              <div class="col-xs-12 col-lg-12">
+                <%= link_to "<span class='glyphicon glyphicon-search'></span>"
+                    .html_safe, product, class: 'btn btn-success' %>
+                <%= link_to "<span class='glyphicon glyphicon-pencil'></span>"
+                    .html_safe, edit_product_path(product), class: 'btn btn-primary' %>
+                <%= link_to "<span class='glyphicon glyphicon-trash'></span>"
+                    .html_safe, product, method: :delete,
+                    data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -27,7 +27,7 @@
       <%= image_tag(product.avatar) %>
     <% end %>
     <p>Wrzuć plik lub podaj link do obrazka z Internetu:</p>
-    <%= f.text_field :avatar, class: "form-control" %>
+    <%= f.text_field :avatar, class: "form-control", value: "" %>
     <%= f.file_field :avatar, class: "form-control" %>
   </div>
 

@@ -1,3 +1,5 @@
-<h1>Witaj</h1>
-Jest <%= Time.now %>
-Złożono <%= pluralize(@total_orders, "order") %>.
+<div class="col-xs-12">
+  <h1>Witaj</h1>
+  <p>Jest <%= Time.now %></p>
+  <p>Ilość złożonych zamówień: <strong><%= @total_orders %></strong>.</p>
+</div>

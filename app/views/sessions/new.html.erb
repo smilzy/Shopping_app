@@ -1,25 +1,27 @@
-<div class="login_form">
-  <% if flash[:alert] %>
-    <p id="notice"><%= flash[:alert] %></p>
-  <% end %>
-
-  <%= form_tag do %>
-    <fieldset>
-      <legend>Please Log In</legend>
-
-      <div>
-        <%= label_tag :name, 'Nazwa:' %>
-        <%= text_field_tag :name, params[:name] %>
-      </div>
-
-      <div>
-        <%= label_tag :password, 'Hasło:' %>
-        <%= password_field_tag :password, params[:password] %>
-      </div>
+<div class="col-xs-12">
+  <div class="login_form">
+    <% if flash[:alert] %>
+      <p id="notice"><%= flash[:alert] %></p>
+    <% end %>
   
-      <div>
-        <%= submit_tag "Login" %>
-      </div>
-    </fieldset>
-  <% end %>
-</div>
+    <%= form_tag do %>
+      <fieldset>
+        <legend>Wpisz dane użytkownika</legend>
+        
+        <div class="field form-group">
+          <%= label_tag :name, 'Nazwa' %>
+          <%= text_field_tag :name, "", class: 'form-control' %>
+        </div>
+      
+        <div class="field form-group">
+          <%= label_tag :password, 'Hasło' %>
+          <%= password_field_tag :password, "", class: "form-control" %>
+        </div>
+      
+        <div class="actions form-group">
+          <%= submit_tag 'Zaloguj się', class: "form-control btn-primary" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>  
