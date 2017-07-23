@@ -19,6 +19,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate'
 gem 'font-awesome-sass'
 gem 'stripe'
 gem 'figaro'

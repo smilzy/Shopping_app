@@ -39,7 +39,6 @@ class OrdersController < ApplicationController
       product.quantity_update(product, qty)
     end
     @order.add_line_items_from_cart(@cart)
-    # możliwe że trzeba dać to pozycję wyżej i zmienić na @cart.line_it... żeby nie stworzyło wcześniej ordera :P 
     
     respond_to do |format|
       
