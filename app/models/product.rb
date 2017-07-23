@@ -47,6 +47,7 @@ class Product < ApplicationRecord
       end
     end
     
+    # Search function for products by name
     def self.search(search)
       where("title LIKE ?", "%#{search}%") 
     end

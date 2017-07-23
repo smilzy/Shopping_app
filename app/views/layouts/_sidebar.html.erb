@@ -7,13 +7,9 @@
       <h3><%= brand %></h3>
       <% @productsSidebar = Product.search(brand).order(:title) %>
       <% @productsSidebar.each do |product| %>
-        <div class="sideitem">
-          <li style="background-color: <%= cycle("#f3f3f3", "none") %>; font-size: 11px;"><%= link_to product.title, product_path(id: product.id) %></li>
-        </div>
+          <li style="background-color: <%= cycle("#eeeeee", "#e3e3e3") %>; font-size: 11px;"><%= link_to product.title, product_path(id: product.id) %></li>
       <% end %>
     </ul>
     <% end %>
-    
-    
   </div>
 </div>

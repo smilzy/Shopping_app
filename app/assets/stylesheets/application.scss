@@ -142,7 +142,7 @@ body {
 
   .sidebar {
     padding: 10px;
-    background: rgba(0,0,0,.1);
+    // background: rgba(0,0,0,.1);
     border-radius: 20px;
     margin-top: 20px;
         
@@ -162,6 +162,12 @@ body {
             background-color: transparent;
           }
         }
+      }
+      li:first-of-type {
+          border-radius: 4px 4px 0 0;
+      }
+      li:last-child {
+          border-radius: 0 0 4px 4px;
       }
     }
     
