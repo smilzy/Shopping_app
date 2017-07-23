@@ -157,9 +157,18 @@ body {
 
         a {
           font-size: 1.4em;
+          color: #000;
+          display: block;
           &:hover {
             text-decoration: none;
             background-color: transparent;
+            color: default;
+          }
+        }
+        &:hover {
+          background-color: rgba(0,0,0,0.5) !important;
+          a {
+          color: #fff;
           }
         }
       }
