@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: [:new]
+  before_action :ensure_products_on_warehouse, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -54,7 +55,7 @@ class OrdersController < ApplicationController
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.json { render json: @order.line_items.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -103,4 +104,5 @@ class OrdersController < ApplicationController
         redirect_to store_index_url, notice: 'Twój koszyk jest pusty'
       end
     end
+    
 end

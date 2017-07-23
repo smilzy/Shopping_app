@@ -10,30 +10,38 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label "Imię" %>
-    <%= f.text_field :name, size: 40 %>
+  
+  <div class="field form-group row">
+    <%= f.label "Imię i nazwisko", class: "col-xs-3 col-form-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :name, size: 40, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="field form-group row">
+    <%= f.label "Adres", class: "col-xs-3 col-form-label" %>
+    <div class="col-xs-9">
+      <%= f.text_area :address, rows: 3, cols: 40, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="field form-group row">
+     <%= f.label "E-mail", class: "col-xs-3 col-form-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :email, size: 40, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="field form-group row">
+    <%= f.label "Sposób zapłaty", class: "col-xs-3 col-form-label" %>
+    <div class="col-xs-9">
+      <%= f.select :pay_type, Order.pay_types.keys,
+              prompt: 'Wybierz metodę płatności', class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label "Adres" %>
-    <%= f.text_area :address, rows: 3, cols: 40 %>
-  </div>
-
-  <div class="field">
-    <%= f.label "E-mail" %>
-    <%= f.text_field :email, size: 40 %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Sposób zapłaty" %>
-    <%= f.select :pay_type, Order.pay_types.keys,
-                        prompt: 'Wybierz metodę płatności' %>
-  </div>
-
-  <div class="actions">
+  <div class="actions form-group row">
     <%= f.label " " %>
-    <%= f.submit 'Złóż zamówienie', class: "btn btn-md btn-primary" %>
+    <%= f.submit 'Złóż zamówienie', class: "btn btn-md btn-primary form-control" %>
   </div>
 <% end %>

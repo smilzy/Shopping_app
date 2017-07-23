@@ -9,11 +9,12 @@ class LineItem < ApplicationRecord
     product.price * quantity
   end
   
-  private
+  # private
   
   def on_warehouse
     unless product.quantity - quantity >= 0
       errors.add(:base, 'Brak produktu na magazynie.')
+      # return false
       throw :abort
     end
   end

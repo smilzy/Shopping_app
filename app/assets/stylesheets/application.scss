@@ -117,6 +117,9 @@ body {
   #kasa {
     float: left;
     margin-right: 10px;
+    a:visited {
+      color: #fff;
+    }
   }
   .btn-danger {
     float: right;
@@ -162,7 +165,6 @@ body {
           &:hover {
             text-decoration: none;
             background-color: transparent;
-            color: default;
           }
         }
         &:hover {

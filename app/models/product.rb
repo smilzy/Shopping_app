@@ -26,7 +26,7 @@ class Product < ApplicationRecord
       product.save
     else
       errors.add(:base, 'Brak takiej ilości towaru na magazynie.')
-      # throw :abort
+      throw :abort
     end
     product
   end
