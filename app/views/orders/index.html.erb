@@ -1,32 +1,39 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Orders</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Email</th>
-      <th>Pay type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.name %></td>
-        <td><%= order.address %></td>
-        <td><%= order.email %></td>
-        <td><%= order.pay_type %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-xs-12">
+    <p id="notice"><%= notice %></p>
+    <h1>Tabela zamówień</h1>
+    <table class="table table-hover table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th>#</th>
+          <th>Imię</th>
+          <th>Płatność</th>
+          <th>Produkty</th>
+          <th>Kwota</th>
+          <th>Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <th scope="row"><%= order.id %></th>
+          <td><%= order.name %></td>
+          <td><%= order.pay_type %></td>
+          <td class="listing" style="max-width: 350px; overflow: hidden;"><% order.line_items.each do |item| %><%= item.product.title %> x <%= item.quantity %> <% end %></td>
+          <td><%= number_to_currency(order.total_price, locale: :pl) %></td>
+          <td><%= link_to link_to "<span class='glyphicon glyphicon-search'></span>"
+                        .html_safe, order, class: 'btn btn-xs btn-success' %>
+            <%= link_to link_to "<span class='glyphicon glyphicon-pencil'></span>"
+                        .html_safe, edit_order_path(order), class: 'btn btn-xs btn-default' %>
+            <%= link_to "<span class='glyphicon glyphicon-trash'></span>"
+                        .html_safe, order, method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <br>
 

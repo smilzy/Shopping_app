@@ -13,23 +13,23 @@
   <fieldset>
     <legend>Wpisz dane użytkownika</legend>
     
-    <div class="field">
-      <%= f.label :name, 'Nazwa' %>
-      <%= f.text_field :name %>
+    <div class="field form-group">
+      <%= f.label :name, 'Nazwa'%>
+      <%= f.text_field :name, class: 'form-control' %>
     </div>
   
-    <div class="field">
-      <%= f.label :password, 'Hasło' %>
-      <%= f.password_field :password %>
+    <div class="field form-group">
+      <%= f.label :password, 'Hasło'%>
+      <%= f.password_field :password, class: 'form-control' %>
     </div>
   
-    <div class="field">
-      <%= f.label :password_confirmation, 'Powtórz hasło' %>
-      <%= f.password_field :password_confirmation %>
+    <div class="field form-group">
+      <%= f.label :password_confirmation, 'Powtórz hasło'%>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
   
     <div class="actions">
-      <%= f.submit 'Stwórz' %>
+      <%= f.submit 'Stwórz', class: 'btn btn-primary form-control' %>
     </div>
   </fieldset>
 <% end %>

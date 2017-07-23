@@ -28,7 +28,9 @@
     <% end %>
     <p>Wrzuć plik lub podaj link do obrazka z Internetu:</p>
     <%= f.text_field :avatar, class: "form-control", value: "" %>
-    <%= f.file_field :avatar, class: "form-control" %>
+    <label class="btn btn-primary form-control">
+      Wrzuć plik z dysku <%= f.file_field :avatar, style: "display:none;" %>
+    </label>
   </div>
 
   <div class="field form-group">
