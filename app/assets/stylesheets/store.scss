@@ -15,6 +15,18 @@
       margin-left: 150px;
     }
   }
+  @media screen and (max-width: 980px) {
+    .list .jedenprodukt {
+      min-height: 250px;
+      .thumbnail {
+        width: 120px;
+      }
+      img {
+        max-height: 140px;
+      }
+    }
+  }
+
   .jedenprodukt {
     min-height: 420px;
     min-width: 170px;
@@ -55,7 +67,6 @@
       margin-right: 20px;
     }
   }
-  
   // Positioning of product descr and price footer.
   .information {
     height: 90px;
@@ -64,6 +75,24 @@
   .prodfooter {
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+  
+  @media screen and (max-width: 980px) {
+    .jedenprodukt {
+      min-width: 100px;
+      min-height: 250px;
+      .thumbnail {
+        height: 150px;
+      }
+    }
+    .information {
+      height: 150px;
+    }
+    .prodfooter {
+      .btn {
+        margin: 0;
+      }
+    }
   }
 }
 

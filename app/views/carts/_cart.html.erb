@@ -1,4 +1,6 @@
-<h2 class="text-center"><i class="fa fa-shopping-cart" aria-hidden="true" style="display: inline-block;"></i> Twój koszyk</h2>
+<h2 class="text-center"><%= link_to '<i class="fa fa-shopping-cart" aria-hidden="true" style="display: inline-block;">
+</i> Twój koszyk'.html_safe, cart %></h2>
+
 <% if cart.line_items.any? %>
   <table>
     <div class="cart_items">
