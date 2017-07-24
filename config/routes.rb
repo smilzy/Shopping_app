@@ -21,6 +21,7 @@ Rails.application.routes.draw do
  
   resources :carts
   root 'store#index', as: 'store_index'
+  get 'smartphones', to: 'store#smartphones'
 
   resources :products do
     get :who_bought, on: :member

@@ -19,12 +19,12 @@
           <li><%= link_to 'Products', products_path %></li>
           <li><%= link_to 'Users', users_path %></li>
           <li><%= link_to "Logout", logout_path, 
-                  class: "btn btn-xs btn-default", method: :delete %></li>
+                  class: "btn btn-xs btn-danger", method: :delete %></li>
       <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Home', store_index_path %></li>
-        <li><%= link_to 'Telefony', store_index_path %></li>
+        <li><%= link_to 'Telefony', smartphones_path %></li>
         <li><%= link_to "Koszyk", @cart, remote: true, id: "navcart" %>
         <% if @cart %>
           <div id="cart" class="notshown"><%= render @cart %></div>
