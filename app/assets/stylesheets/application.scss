@@ -157,6 +157,7 @@ body {
 
 // JUMBOTRON
 .welcome-screen {
+<<<<<<< HEAD
   background: asset_url('Jumbotron2.jpg') no-repeat center fixed;
   top: 0;
   left: 0;
@@ -167,6 +168,12 @@ body {
   max-width: 1196px;
   // min-width: 500px;
   background-size: 100% 100%;
+=======
+  background: asset_url('Jumbotron2.jpg') no-repeat fixed;
+  top: 0;
+  left: 0;
+  background-size: contain;
+>>>>>>> 2effdf0d9019dd98f38445ef6abf2dac4d5a2c5a
   border-radius: 0 0 10px 10px;
   margin: 0;
   .jumbotron {
@@ -174,7 +181,10 @@ body {
     text-shadow: black 0.3em 0.3em 0.3em;
     background:transparent;
     padding: 100px 0 100px 0;
+<<<<<<< HEAD
     // min-width: 720px;
+=======
+>>>>>>> 2effdf0d9019dd98f38445ef6abf2dac4d5a2c5a
     h1 {
       font-size: 7em;
     }
@@ -183,10 +193,14 @@ body {
 
 @media screen and (max-width: 980px) {
   .welcome-screen {
+<<<<<<< HEAD
     // height: 70%;
       .jumbotron {
       padding: 5px 0 5px 0;
     }
+=======
+    height: 300px;
+>>>>>>> 2effdf0d9019dd98f38445ef6abf2dac4d5a2c5a
   }
 }
 
