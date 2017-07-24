@@ -83,6 +83,9 @@
       min-height: 250px;
       .thumbnail {
         height: 150px;
+        img {
+          max-height: 140px;
+        }
       }
     }
     .information {
