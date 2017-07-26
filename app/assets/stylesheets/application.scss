@@ -150,8 +150,9 @@ body {
 // cart lowres in navbar
 @media screen and (max-width: 767px) {
   #cart {
-    left: 0;
+    left: -1px;
     border-radius: 0 0 3px 3px;
+    position: fixed;
   }
 }
 
@@ -251,6 +252,12 @@ body {
   }
 }
 
+@media screen and (min-width: 768px) {
+  #sidebar-hide {
+    display: none;
+  }
+}
+
 // ORDER
 .depot_form {
   fieldset {
@@ -279,5 +286,17 @@ body {
     br {
     display: none
     }
+  }
+}
+
+// SEARCH BAR LOW RES
+.search-products {
+  float: right;
+}
+
+@media screen and (max-width: 505px) {
+  .search-products {
+    float: none;
+    margin: 10px;
   }
 }

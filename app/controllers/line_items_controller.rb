@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   skip_before_action :authorize
   include CurrentCart
-  before_action :set_cart, only: [:create, :decrement]
+  before_action :set_cart, only: [:create, :decrement, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -63,9 +63,16 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.find(params[:id])
     @line_item.destroy
     
-    respond_to do |format|
-      format.html { redirect_to store_index_url, notice: 'Przedmiot usunięty z koszyka.' }
-      format.json { head :no_content }
+    if @cart.line_items.length == 0
+      respond_to do |format|
+        format.html { redirect_to store_index_url, notice: 'Przedmiot usunięty z koszyka. Koszyk jest pusty.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to cart_url(@cart.id), notice: 'Przedmiot usunięty z koszyka.' }
+        format.json { head :no_content }
+      end
     end
   end
   
@@ -79,7 +86,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to store_index_url, notice: 'Przedmiot usunięty z koszyka.' }
+        format.html { redirect_to cart_url(@cart.id), notice: 'Przedmiot usunięty z koszyka.' }
         format.js { @current_item = @line_item }
         format.json { head :ok }
       else

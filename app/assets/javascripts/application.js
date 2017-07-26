@@ -32,3 +32,11 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();$('.products .columns').removeClass('col-xs-12 col-lg-12 list');
     $('.products .columns').addClass('col-xs-4 col-lg-4 grid');});
 });
+
+$(document).on('turbolinks:load', function() {
+  $('#sidebar-hide').on('click',function(event){
+    event.preventDefault();
+    $('#sidebar-hide span').text($('#sidebar-hide span').text() == 'Zwiń' ? 'Rozwiń' : 'Zwiń');
+    $('.sidebar-content').slideToggle(500);
+  });
+});  

@@ -1,15 +1,20 @@
 <div class="row menu text-center">
   <div class="col-xs-12">
     <h2 style="margin-top: 5px;">Lista przedmiotów</h2>
-    <% brands = [ 'Samsung', 'iPhone', 'Nokia', 'Motorola', 'Test' ] %>
-    <% brands.each do |brand| %>
-    <ul>
-      <h3><%= brand %></h3>
-      <% @productsSidebar = Product.search(brand).order(:title) %>
-      <% @productsSidebar.each do |product| %>
-        <li style="background-color: <%= cycle("#eeeeee", "#e3e3e3") %>; font-size: 11px;"><%= link_to product.title, product_path(id: product.id) %></li>
+    <div id="sidebar-hide">
+      <span class='glyphicon glyphicon-remove'>Zwiń</span>
+    </div>
+    <div class="sidebar-content"> 
+      <% brands = [ 'Samsung', 'iPhone', 'Nokia', 'Motorola', 'Test' ] %>
+      <% brands.each do |brand| %>
+      <ul>
+        <h3><%= brand %></h3>
+        <% @productsSidebar = Product.search(brand).order(:title) %>
+        <% @productsSidebar.each do |product| %>
+          <li style="background-color: <%= cycle("#eeeeee", "#e3e3e3") %>; font-size: 11px;"><%= link_to product.title, product_path(id: product.id) %></li>
+        <% end %>
+      </ul>
       <% end %>
-    </ul>
-    <% end %>
+    </div>
   </div>
 </div>
