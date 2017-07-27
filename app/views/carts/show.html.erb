@@ -28,6 +28,14 @@
                           data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
           </tr>
           <% end %>
+          <tr class="cart-sum">
+              <th colspan = "1"></td>
+              <th style="float: right;"><h4>Suma:</h4></th>
+              <td style="border-top: 2px solid red;">
+                <h4><strong><%= number_to_currency(@cart.total_price, locale: :pl) %></strong></h4>
+              </td>
+              <td></td>
+            </tr>
         </tbody>
       </table>
     <% else %>

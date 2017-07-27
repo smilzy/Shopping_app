@@ -19,9 +19,30 @@
   </div>
   
   <div class="field form-group row">
-    <%= f.label "Adres", class: "col-xs-3 col-form-label" %>
+    <%= f.label "Ulica i nr domu", class: "col-xs-3 col-form-label" %>
     <div class="col-xs-9">
-      <%= f.text_area :address, rows: 3, cols: 40, class: "form-control" %>
+      <%= f.text_area :address, placeholder: "np.: Słowackiego 12/3", rows: 3, cols: 40, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="field form-group row">
+    <%= f.label "Kod pocztowy", class: "col-xs-3 col-form-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :postal_code, placeholder: "xx-xxx", class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="field form-group row">
+    <%= f.label "Miejscowość", class: "col-xs-3 col-form-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="field form-group row">
+     <%= f.label "Nr telefonu", class: "col-xs-3 col-form-label" %>
+    <div class="col-xs-9">
+      <%= f.text_field :phone_number, size: 14, class: "form-control" %>
     </div>
   </div>
   
