@@ -208,6 +208,10 @@ body {
     // background: rgba(0,0,0,.1);
     border-radius: 20px;
     margin-top: 20px;
+    
+    #sidebar-hide {
+      display: none;
+    }
         
     ul {
       padding: 0;
@@ -252,9 +256,18 @@ body {
   }
 }
 
-@media screen and (min-width: 768px) {
+// Temporary show/hide on lowres only
+@media screen and (max-width: 767px) {
   #sidebar-hide {
+    display: block !important;
+  }
+  .sidebar-content {
     display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .sidebar-content {
+    display: block !important;
   }
 }
 
