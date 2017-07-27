@@ -28,6 +28,23 @@ body {
   display: none;
 }
 
+.clearlink {
+  a {
+  color: #fff;
+  text-decoration: none;
+
+    &:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+  
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}
+
 .navbar {
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
