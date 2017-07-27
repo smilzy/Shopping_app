@@ -38,8 +38,13 @@
         <p style="color: <% if @product.quantity > 0 %> green <% else %> red <% end %>">
           Na magazynie: <%= @product.quantity %> szt.
         </p>
-        <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: @product),
-                    remote: true, class: "btn btn-lg btn-default btn-block" %>
+        <% if @product.quantity > 0 %>
+          <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: @product),
+                      remote: true, class: "btn btn-lg btn-default btn-block" %>
+        <% else %>
+          <%= button_to 'Produkt niedostępny', line_items_path(product_id: @product),
+                      class: "btn btn-lg btn-default btn-block disabled", disabled: true %>
+        <% end %>
       </div>
     </div>
     

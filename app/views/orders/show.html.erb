@@ -55,8 +55,17 @@
               <td><%= number_to_currency(item.total_price, locale: :pl) %></td>
             </tr>
             <% end %>
+            <tr>
+              <td colspan="4" class="emptyrow" style="padding: 20px;"></td>
+            </tr>
+            <tr>
+              <th>Sposób dostawy</th>
+              <td><%= @delivery.name %></td>
+              <th>Koszt dostawy:</th>
+              <td><%= number_to_currency(@delivery.price, locale: :pl) %></td>
+            </tr>
             <tr class="order-sum">
-              <th colspan = "2"></td>
+              <td colspan = "2"></td>
               <th style="float: right;"><h4>Suma:</h4></th>
               <td style="border-top: 2px solid red;">
                 <h4><strong><%= number_to_currency(@order.total_price, locale: :pl) %></strong></h4>

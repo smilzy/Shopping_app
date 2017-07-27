@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
+  belongs_to :delivery, optional: true
   enum pay_type: {
     "Przelew"         => 0,
     "Karta kredytowa" => 1,
@@ -17,6 +18,6 @@ class Order < ApplicationRecord
   end
   
   def total_price
-    line_items.to_a.sum { |item| item.total_price }
+    line_items.to_a.sum { |item| item.total_price } + delivery.price
   end
 end
