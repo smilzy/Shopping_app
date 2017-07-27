@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     post 'decrement', on: :member
   end
  
-  resources :carts
+  resources :carts do
+    patch 'update_delivery', on: :member
+  end
   root 'store#index', as: 'store_index'
   get 'smartphones', to: 'store#smartphones'
 

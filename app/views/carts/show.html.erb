@@ -54,7 +54,7 @@
           </tr>
         </thead>
       <tbody>
-        <%= form_for(@cart) do |f| %>
+        <%= form_for @cart, url: update_delivery_cart_path(@cart) do |f| %>
           <% @deliveryOptions.each do |option| %>
             <tr>
               <th scope="row" class="deliveryRadio"><%= f.radio_button :delivery_id, option.id %></th>
@@ -64,11 +64,7 @@
             </tr>
           <% end %>
           <tr>
-            <td colspan = "4">
-              <div class="actions">
-                <%= f.submit "Wybierz metodę dostawy", class: 'btn btn-block btn-primary' %>
-              </div>
-            </td>
+            <%= f.submit "Wybierz metodę dostawy", class: 'btn btn-block btn-primary' %>
           </tr>
         <% end %>
           <tr>

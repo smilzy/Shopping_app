@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
-  skip_before_action :authorize, only: [:show, :new, :edit, :update, :destroy]
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:show, :new, :edit, :update, :update_delivery, :destroy]
+  before_action :set_cart, only: [:show, :edit, :update, :update_delivery, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
@@ -44,7 +44,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1.json
   def update
     respond_to do |format|
-      if @cart.update(cart_delivery_params)
+      if @cart.update(cart_params)
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
       else
@@ -62,6 +62,18 @@ class CartsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to store_index_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def update_delivery
+    respond_to do |format|
+      if @cart.update(cart_delivery_params)
+        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.json { render :show, status: :ok, location: @cart }
+      else
+        format.html { render :edit }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
     end
   end
   
