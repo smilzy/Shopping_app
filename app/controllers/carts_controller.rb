@@ -12,6 +12,7 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @deliveryOptions = Delivery.all
   end
 
   # GET /carts/new
@@ -43,7 +44,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1.json
   def update
     respond_to do |format|
-      if @cart.update(cart_params)
+      if @cart.update(cart_delivery_params)
         format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
       else
@@ -68,13 +69,18 @@ class CartsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
       @cart = Cart.find(params[:id])
+      @delivery = Delivery.find(@cart.delivery_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.fetch(:cart, {})
+      params.fetch(:cart, {}, :delivery_id)
     end
-    
+  
+    def cart_delivery_params
+      params.require(:cart).permit(:delivery_id)
+    end
+  
     def invalid_cart
       logger.error "Attempt to acces invalid cart #{params[:id]}"
       redirect_to store_index_url, notice: 'Invalid cart'
