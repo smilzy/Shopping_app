@@ -4,6 +4,8 @@
     <h2 class="text-center"><i class="fa fa-shopping-cart" aria-hidden="true" style="display: inline-block; color: red;">
       </i> Twój koszyk</h2>
     <% if @cart.line_items.any? %>
+    
+    <!--KOSZYK-->
       <table class="table table-hover table-striped">
         <thead class="thead-inverse">
           <tr>
@@ -28,24 +30,36 @@
                           data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
           </tr>
           <% end %>
-          <!--<tr>-->
-          <!--  <th>Metoda dostawy:</th>-->
-          <!--  <td><%= @delivery.name %></td>-->
-          <!--  <td><%= number_to_currency(@delivery.price, locale: :pl) %></td>-->
-          <!--  <td></td>-->
-          <!--</tr>-->
           <tr class="cart-sum">
               <th colspan = "1"></td>
               <th style="text-align: right;"><h4>Suma:</h4></th>
-              <td style="border-top: 2px solid red;">
+              <td>
                 <h4><strong><%= number_to_currency(@cart.total_price, locale: :pl) %></strong></h4>
               </td>
               <td></td>
             </tr>
+          <tr>
+            <th>Metoda dostawy:</th>
+            <td><%= @delivery.name %></td>
+            <td><%= number_to_currency(@delivery.price, locale: :pl) %></td>
+            <td></td>
+          </tr>
+          <tr class="cart-sum">
+              <td></td>
+              <th style="text-align:right;"><h4>Koszt wraz z przesyłką:</h4></th>
+              <td style="border-top: 2px solid red;">
+                <h4><strong><%= number_to_currency(@cart.total_price+@delivery.price, locale: :pl) %></strong></h4>
+              </td>
+              <td></td>
+            </tr>
+            
         </tbody>
       </table>
       
-      <table class="table table-hover table-striped">
+      <!-- DOSTAWA -->
+      <h2 class="text-center">Wybierz metodę dostawy</h2> 
+      
+      <table class="table table-hover table-striped delivery">
         <thead class="thead-inverse">
           <tr>
             <th>#</th>
@@ -62,18 +76,9 @@
               <td><%= number_to_currency(option.price, locale: :pl) %></td>
             </tr>
           <% end %>
-          <!--<tr>-->
-          <!--  <%= f.submit "Wybierz metodę dostawy", class: 'btn btn-block btn-primary' %>-->
-          <!--</tr>-->
-        <!-- !!!!!!!!!!!!!!!! -->
-          <tr>
-            <th>Metoda dostawy:</th>
-            <td><%= @delivery.name %></td>
-            <td><%= number_to_currency(@delivery.price, locale: :pl) %></td>
-          </tr>
           <tr class="cart-sum">
               <td></td>
-              <th style="text-align:right;"><h4>Koszt wraz z przesyłką:</h4></th>
+              <th style="text-align:right;"><h4 style="margin-right:10px;">Koszt wraz z przesyłką:</h4></th>
               <td style="border-top: 2px solid red;">
                 <h4><strong><%= number_to_currency(@cart.total_price+@delivery.price, locale: :pl) %></strong></h4>
               </td>

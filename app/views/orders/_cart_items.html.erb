@@ -1,0 +1,38 @@
+<div class="row">
+  <table class="table table-hover table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Produkt</th>
+        <th>Ilość</th>
+        <th>Cena jednostkowa</th>
+        <th>Kwota do zapłaty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart.line_items.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.product.title %></th>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.product.price, locale: :pl) %></td>
+        <td><%= number_to_currency(item.total_price, locale: :pl) %></td>
+      </tr>
+      <% end %>
+      <tr class="cart-sum">
+          <th colspan = "2"></td>
+          <th style="text-align: right;"><h4>Suma:</h4></th>
+          <td>
+            <h4><strong><%= number_to_currency(@cart.total_price, locale: :pl) %></strong></h4>
+          </td>
+        </tr>
+        <tr>
+        <th colspan="2">Metoda dostawy:</th>
+        <td><%= @delivery.name %></td>
+        <td>+<%= number_to_currency(@delivery.price, locale: :pl) %></td>
+      </tr>
+      <tr>
+        <th colspan="3" style="text-align:right;"><h4>Kwota do zapłaty:</h4></th>
+        <td style="border-top: 2px solid red;"><h4><strong><%= number_to_currency(@cart.checkout_price, locale: :pl) %></strong></h4></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

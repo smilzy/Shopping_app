@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @delivery = Delivery.find(@cart.delivery_id)
     @order = Order.new
     respond_to do |format|
       format.html

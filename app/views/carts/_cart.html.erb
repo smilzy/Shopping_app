@@ -16,8 +16,7 @@
   
   <div class="block">
     <div id="kasa">
-    <%= link_to "Do kasy", new_order_path, method: :get, remote: true,
-                                      class: "btn btn-xs btn-primary" %>
+    <%= link_to "Do kasy", @cart, method: :get, class: "btn btn-xs btn-primary" %>
     </div>
     <%= button_to 'Wyczyść koszyk', cart, method: :delete,
     data: { confirm: 'Czy na pewno chcesz usunąć zawartość koszyka?' },

@@ -10,56 +10,65 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field form-group row">
-    <%= f.label "Imię i nazwisko", class: "col-xs-3 col-form-label" %>
-    <div class="col-xs-9">
-      <%= f.text_field :name, size: 40, class: "form-control" %>
+  <div class="personal-details">
+    <h2>Twoje dane</h2>
+    <div class="field form-group row">
+      <%= f.label "Imię i nazwisko", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.text_field :name, size: 40, class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="field form-group row">
+       <%= f.label "Nr telefonu", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.text_field :phone_number, size: 14, class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="field form-group row">
+       <%= f.label "E-mail", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.text_field :email, size: 40, class: "form-control" %>
+      </div>
     </div>
   </div>
   
-  <div class="field form-group row">
-    <%= f.label "Ulica i nr domu", class: "col-xs-3 col-form-label" %>
-    <div class="col-xs-9">
-      <%= f.text_area :address, placeholder: "np.: Słowackiego 12/3", rows: 3, cols: 40, class: "form-control" %>
+  <div class="address">
+    <h2>Dane adresowe</h2>
+    <div class="field form-group row">
+      <%= f.label "Ulica i nr domu", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.text_field :address, placeholder: "np.: Słowackiego 12/3", rows: 3, cols: 40, class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="field form-group row">
+      <%= f.label "Kod pocztowy", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.text_field :postal_code, placeholder: "xx-xxx", class: "form-control" %>
+      </div>
+    </div>
+    
+    <div class="field form-group row">
+      <%= f.label "Miejscowość", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.text_field :city, class: "form-control" %>
+      </div>
     </div>
   </div>
-  
-  <div class="field form-group row">
-    <%= f.label "Kod pocztowy", class: "col-xs-3 col-form-label" %>
-    <div class="col-xs-9">
-      <%= f.text_field :postal_code, placeholder: "xx-xxx", class: "form-control" %>
+
+  <div class="payment-type">
+    <h2>Płatność</h2>
+    <div class="field form-group row">
+      <%= f.label "Sposób zapłaty", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.select :pay_type, Order.pay_types.keys,
+                prompt: 'Wybierz metodę płatności', class: "form-control" %>
+      </div>
     </div>
   </div>
-  
-  <div class="field form-group row">
-    <%= f.label "Miejscowość", class: "col-xs-3 col-form-label" %>
-    <div class="col-xs-9">
-      <%= f.text_field :city, class: "form-control" %>
-    </div>
-  </div>
-  
-  <div class="field form-group row">
-     <%= f.label "Nr telefonu", class: "col-xs-3 col-form-label" %>
-    <div class="col-xs-9">
-      <%= f.text_field :phone_number, size: 14, class: "form-control" %>
-    </div>
-  </div>
-  
-  <div class="field form-group row">
-     <%= f.label "E-mail", class: "col-xs-3 col-form-label" %>
-    <div class="col-xs-9">
-      <%= f.text_field :email, size: 40, class: "form-control" %>
-    </div>
-  </div>
-  
-  <div class="field form-group row">
-    <%= f.label "Sposób zapłaty", class: "col-xs-3 col-form-label" %>
-    <div class="col-xs-9">
-      <%= f.select :pay_type, Order.pay_types.keys,
-              prompt: 'Wybierz metodę płatności', class: "form-control" %>
-    </div>
-  </div>
+
 
   <div class="actions form-group row">
     <%= f.label " " %>
