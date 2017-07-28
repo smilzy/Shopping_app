@@ -28,4 +28,8 @@ class Cart < ApplicationRecord
   def total_price
     line_items.to_a.sum { |item| item.total_price } 
   end
+  
+  def checkout_price
+    total_price + delivery.price
+  end
 end

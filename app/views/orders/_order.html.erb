@@ -5,6 +5,16 @@
       <%= render 'form', order: @order %>
     </fieldset>
   </div>
+    
+  <div class="row">
+    <div class="col-xs-9" style="text-align: right;"> 
+        <h4>Kwota do zapłaty:</h4>
+    </div>
+    <div class="col-xs-3">
+      <h4><strong><%= number_to_currency(@cart.checkout_price, locale: :pl) %></strong></h4>
+    </div>
+  </div>
+  
 </div>
 
 <script>

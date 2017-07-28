@@ -28,18 +28,19 @@
                           data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
           </tr>
           <% end %>
-          <tr>
-            <th>Metoda dostawy:</th>
-            <td><%= @delivery.name %></td>
-            <td><%= number_to_currency(@delivery.price, locale: :pl) %></td>
-            <td></td>
-          </tr>
+          <!--<tr>-->
+          <!--  <th>Metoda dostawy:</th>-->
+          <!--  <td><%= @delivery.name %></td>-->
+          <!--  <td><%= number_to_currency(@delivery.price, locale: :pl) %></td>-->
+          <!--  <td></td>-->
+          <!--</tr>-->
           <tr class="cart-sum">
               <th colspan = "1"></td>
-              <th style="float: right;"><h4>Suma:</h4></th>
+              <th style="text-align: right;"><h4>Suma:</h4></th>
               <td style="border-top: 2px solid red;">
                 <h4><strong><%= number_to_currency(@cart.total_price, locale: :pl) %></strong></h4>
               </td>
+              <td></td>
             </tr>
         </tbody>
       </table>
@@ -49,43 +50,42 @@
           <tr>
             <th>#</th>
             <th>Metoda dostawy</th>
-            <th>Kwota do zapłaty</th>
-            <th></th>
+            <th>Koszt dostawy</th>
           </tr>
         </thead>
       <tbody>
         <%= form_for @cart, url: update_delivery_cart_path(@cart) do |f| %>
           <% @deliveryOptions.each do |option| %>
             <tr>
-              <th scope="row" class="deliveryRadio"><%= f.radio_button :delivery_id, option.id %></th>
+              <th scope="row" id="deliveryId=<%= option.id %>"><%= f.radio_button :delivery_id, option.id %></th>
               <td><%= option.name %></td>
               <td><%= number_to_currency(option.price, locale: :pl) %></td>
-              <td></td>
             </tr>
           <% end %>
-          <tr>
-            <%= f.submit "Wybierz metodę dostawy", class: 'btn btn-block btn-primary' %>
-          </tr>
-        <% end %>
+          <!--<tr>-->
+          <!--  <%= f.submit "Wybierz metodę dostawy", class: 'btn btn-block btn-primary' %>-->
+          <!--</tr>-->
+        <!-- !!!!!!!!!!!!!!!! -->
           <tr>
             <th>Metoda dostawy:</th>
             <td><%= @delivery.name %></td>
             <td><%= number_to_currency(@delivery.price, locale: :pl) %></td>
-            <td></td>
           </tr>
           <tr class="cart-sum">
-              <th colspan = "1"></td>
-              <th style="float: right;"><h4>Suma:</h4></th>
+              <td></td>
+              <th style="text-align:right;"><h4>Koszt wraz z przesyłką:</h4></th>
               <td style="border-top: 2px solid red;">
                 <h4><strong><%= number_to_currency(@cart.total_price+@delivery.price, locale: :pl) %></strong></h4>
-              </td>
-              <td class="clearlink">
-                <%= link_to "Do kasy", new_order_path, method: :get,
-                                    class: "btn btn-primary" %>
               </td>
             </tr>
         </tbody>
       </table>
+      <div class="submitbtn" style="margin-bottom: 10px;">
+        <%= f.submit "Do kasy", class: 'btn btn-block btn-primary' %>
+      </div>
+      <% end %>
+    <% else %>
+      <h3 class="text-center">Twój koszyk jest pusty.</h3>
     <% end %>
   </div>
 </div>
