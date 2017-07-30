@@ -68,8 +68,7 @@ class CartsController < ApplicationController
   def update_delivery
     respond_to do |format|
       if @cart.update(cart_delivery_params)
-        format.html { redirect_to new_order_path, notice: 'Cart was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cart }
+        format.html { redirect_to new_order_path, notice: 'Koszyk został zapisany pomyślnie.' }
       else
         format.html { render :edit }
         format.json { render json: @cart.errors, status: :unprocessable_entity }

@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 2.5'
  gem 'bcrypt', '~> 3.1.7'
 # Use Gem for Przelewy24 integration
 gem 'przelewy24_payment', '~> 0.2.0'
+# Use gem for route names
+gem 'friendly_id', '~> 5.1.0'
  
 
 # Use Capistrano for deployment
