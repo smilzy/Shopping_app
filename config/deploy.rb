@@ -1,6 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.9.0"
 
+# For migrating with branch cap prod deploy BRANCH=name
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 set :application, "depot_app"
 set :repo_url, "git@bitbucket.org:Smilzy/depot.git"

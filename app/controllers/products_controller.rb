@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
         
-        # dynamically_update_products
+        dynamically_update_products
       else
         format.html { render :edit }
         format.json { render json: @product.errors, 
