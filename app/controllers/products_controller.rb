@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authorize, only: [:show]
   include CurrentCart
+  include ApplicationHelper
   before_action :set_cart, only: [:show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
@@ -54,9 +55,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
         
-        @products = Product.paginate(:page => params[:page], :per_page => 9).order(:title)
-        ActionCable.server.broadcast 'products',
-                    html: render_to_string('store/index', layout: false)
+        dynamically_update_products
       else
         format.html { render :edit }
         format.json { render json: @product.errors, 

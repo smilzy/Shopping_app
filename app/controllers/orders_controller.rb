@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
   include CurrentCart
+  include ApplicationHelper
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: [:new]
   before_action :ensure_products_on_warehouse, only: [:new, :create]
@@ -45,6 +46,9 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       
+      # Dynamically update Products quantity (same as in ProdController)
+      dynamically_update_products
+                    
       if @order.save && @order.pay_type == "Karta kredytowa"
         format.html { redirect_to new_charge_url }
         format.json { render :show, status: :created, location: @order }

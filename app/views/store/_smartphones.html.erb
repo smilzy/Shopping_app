@@ -28,10 +28,10 @@
                 </div>
                 <div class="add_to_basket col-xs-12 col-md-6 col-md-offset--1">
                   <% if product.quantity > 0 %>
-                    <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product),
+                    <%= button_to 'Dodaj do Koszyka', line_items_path(product_id: product.id),
                     remote: true, class: "btn btn-sm btn-primary" %>
                   <% else %>
-                    <%= button_to 'Produkt niedostępny', line_items_path(product_id: product),
+                    <%= button_to 'Produkt niedostępny', line_items_path(product_id: product.id),
                     class: "btn btn-sm btn-default disabled", disabled: true %>
                   <% end %>
                 </div>

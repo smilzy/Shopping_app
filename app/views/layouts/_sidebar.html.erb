@@ -11,7 +11,7 @@
         <h3><%= brand %></h3>
         <% @productsSidebar = Product.search(brand).order(:title) %>
         <% @productsSidebar.each do |product| %>
-          <li style="background-color: <%= cycle("#eeeeee", "#e3e3e3") %>; font-size: 11px;"><%= link_to product.title, product_path(id: product.id) %></li>
+          <li style="background-color: <%= cycle("#eeeeee", "#e3e3e3") %>; font-size: 11px;"><%= link_to product.title, product_path(id: product) %></li>
         <% end %>
       </ul>
       <% end %>
