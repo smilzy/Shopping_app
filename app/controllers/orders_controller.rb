@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       
       # Dynamically update Products quantity (same as in ProdController)
-      dynamically_update_products
+      # dynamically_update_products
                     
       if @order.save && @order.pay_type == "Karta kredytowa"
         format.html { redirect_to new_charge_url }

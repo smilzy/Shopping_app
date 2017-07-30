@@ -1,6 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.9.0"
 
+set :branch, ENV['BRANCH'] if ENV['BRANCH']
 set :application, "depot_app"
 set :repo_url, "git@bitbucket.org:Smilzy/depot.git"
 set :rvm_type, :user
