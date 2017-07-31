@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
+  
   get 'admin', to: 'admin#index'
   
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
+  # controller :sessions do
+  #   get 'login' => :new
+  #   post 'login' => :create
+  #   delete 'logout' => :destroy
+  # end
 
-  get 'sessions/new'
+  # get 'sessions/new'
 
-  get 'sessions/create'
+  # get 'sessions/create'
 
-  get 'sessions/destroy'
+  # get 'sessions/destroy'
 
-  resources :users
+  # resources :users
   resources :orders
   resources :line_items do
     post 'decrement', on: :member

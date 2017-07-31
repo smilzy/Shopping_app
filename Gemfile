@@ -42,6 +42,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'przelewy24_payment', '~> 0.2.0'
 # Use gem for route names
 gem 'friendly_id', '~> 5.1.0'
+# Use Devise for user authentication
+gem 'devise'
  
 
 # Use Capistrano for deployment

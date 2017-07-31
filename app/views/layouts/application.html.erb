@@ -16,7 +16,7 @@
   <body class="<%= controller.controller_name %>">
     <%= render 'layouts/header' %>
     <div class="container">
-      <% if current_page?(:controller => 'store', :action => 'index') %>
+      <% if current_page?(store_index_path) %>
       <div class="row">
         <%= render 'layouts/jumbotron' %>
       </div>

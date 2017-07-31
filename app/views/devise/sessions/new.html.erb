@@ -1,0 +1,29 @@
+<div class="col-xs-12 col-md-8">
+  <h2>Logowanie</h2>
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+    </div>
+  
+    <div class="field form-group">
+      <%= f.label :password, 'Hasło' %><br />
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    </div>
+  
+    <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, 'Zapamiętaj mnie' %>
+      </div>
+    <% end -%>
+  
+    <div class="actions form-group">
+      <%= f.submit "Zaloguj się", class: 'btn btn-primary form-control' %>
+    </div>
+  <% end %>
+  
+  <h4 style="margin-top: 10px;">Nie masz konta? <%= link_to 'Zarejestruj się!', new_user_registration_path %></h4>
+</div>
+
