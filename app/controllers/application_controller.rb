@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     #   redirect_to login_url, notice: "Please log in"
     # end
     unless admin_user_signed_in?
-      redirect_to login_url, notice: "Please log in"
+      redirect_to new_admin_user_session_url, notice: "Please log in"
     end
   end
   
