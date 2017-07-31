@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   skip_before_action :authorize, only: [:new, :create]
   include CurrentCart
   include ApplicationHelper
-  before_action :set_cart, only: [:new, :create]
+  before_action :set_cart, only: [:new, :create, :history]
   before_action :ensure_cart_isnt_empty, only: [:new]
   before_action :ensure_products_on_warehouse, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -42,7 +42,10 @@ class OrdersController < ApplicationController
       product.quantity_update(product, qty)
     end
     @order.add_line_items_from_cart(@cart)
-    @order.delivery_id = @cart.delivery_id
+    # @order.delivery_id = @cart.delivery_id
+    if user_signed_in?
+      @order.user_id = current_user.id
+    end
     
     respond_to do |format|
       
@@ -92,6 +95,10 @@ class OrdersController < ApplicationController
   
   rescue_from 'User::Error' do |exception|
     redirect_to users_url, notice: exception.message
+  end
+  
+  def history
+    @orders = current_user.orders
   end
 
   private

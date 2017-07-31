@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   # resources :users
   resources :orders
+  get 'history', to: 'orders#history'
+  
   resources :line_items do
     post 'decrement', on: :member
   end

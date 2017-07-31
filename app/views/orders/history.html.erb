@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p id="notice"><%= notice %></p>
+    <h1>Tabela zamówień</h1>
+    <table class="table table-hover table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th>#</th>
+          <th>Imię</th>
+          <th>Płatność</th>
+          <th>Produkty</th>
+          <th>Kwota</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <th scope="row"><%= order.id %></th>
+          <td><%= order.name %></td>
+          <td><%= order.pay_type %></td>
+          <td class="listing" style="max-width: 350px; overflow: hidden;"><% order.line_items.each do |item| %><%= item.product.title %> x <%= item.quantity %> <% end %></td>
+          <td><%= number_to_currency(order.total_price, locale: :pl) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

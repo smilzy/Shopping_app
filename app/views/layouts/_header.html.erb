@@ -15,6 +15,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to 'Orders', orders_path %></li>
+          <li><%= link_to 'Historia', history_path %></li>
           <li><%= link_to 'Products', products_path %></li>
           <li><%= link_to "Wyloguj się", destroy_user_session_path,
                     method: :delete, class: "btn btn-xs btn-danger" %></li>
