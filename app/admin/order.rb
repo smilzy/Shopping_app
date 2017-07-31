@@ -2,7 +2,7 @@ ActiveAdmin.register Order do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-# permit_params :list, :of, :attributes, :on, :model
+  permit_params :name, :address, :postal_code, :city, :price
 #
 # or
 #
@@ -23,9 +23,10 @@ ActiveAdmin.register Order do
     column :pay_type
     column :delivery
     column :user
-    column :total_price, sortable: :total_price do |price|
-      number_to_currency price.total_price, locale: :pl
+    column :price, sortable: :price do |order|
+      number_to_currency order.price, locale: :pl
     end
+    column :line_items
     actions
   end
 end

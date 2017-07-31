@@ -15,18 +15,24 @@ ActiveAdmin.register_page "Dashboard" do
             end
             column :created_at
             column :delivery
-            column :total_price, sortable: :total_price do |price|
-              number_to_currency price.total_price, locale: :pl
-            end
+            column :price
           end
         end
       end
 
       column do
-        panel "Info" do
-          para "Welcome to ActiveAdmin."
+        panel "Recent Customers" do
+          table_for User.order("id desc").limit(10).each do |_user|
+            column(:email)    { |user| link_to(user.email, admin_user_path(user)) }
+            column "Orders" do
+              |user| Order.where(user_id: user.id).each do |order|
+                link_to(order.name, admin_order_path(order))
+              end
+            end
+          end
         end
       end
+
     end
   end # content
 end
