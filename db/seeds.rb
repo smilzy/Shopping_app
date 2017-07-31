@@ -50,3 +50,4 @@ Product.delete_all
     price: 999.99)
   # . . .
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

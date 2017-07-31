@@ -44,7 +44,8 @@ gem 'przelewy24_payment', '~> 0.2.0'
 gem 'friendly_id', '~> 5.1.0'
 # Use Devise for user authentication
 gem 'devise'
- 
+# Use Active Admin for admin panel
+gem 'activeadmin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
