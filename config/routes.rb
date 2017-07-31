@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admins, path_names: { sign_in: 'login', sign_out: 'logout'}
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
   
-  get 'admin', to: 'admin#index'
+  # get 'admin', to: 'admin#index'
   
   # controller :sessions do
   #   get 'login' => :new
