@@ -26,11 +26,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Customers" do
           table_for User.order("id desc").limit(10).each do |_user|
             column(:email)    { |user| link_to(user.email, admin_user_path(user)) }
-            column "Orders" do
-              |user| Order.where(user_id: user.id).each do |order|
-                link_to(order.name, admin_order_path(order))
-              end
-            end
+            column(:orders) { |user| user.orders.last } 
           end
         end
       end

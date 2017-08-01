@@ -73,7 +73,7 @@
               <td colspan = "2"></td>
               <th style="float: right;"><h4>Suma:</h4></th>
               <td style="border-top: 2px solid red;">
-                <h4><strong><%= number_to_currency(@order.total_price, locale: :pl) %></strong></h4>
+                <h4><strong><%= number_to_currency(@order.price, locale: :pl) %></strong></h4>
               </td>
             </tr>
           </tbody>

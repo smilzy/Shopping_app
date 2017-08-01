@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
       product.quantity_update(product, qty)
     end
     @order.add_line_items_from_cart(@cart)
-    @order.delivery_id = @cart.delivery_id
     if user_signed_in?
       @order.user_id = current_user.id
     end
@@ -110,7 +109,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :phone_number, :pay_type, :postal_code, :city, :delivery_id)
+      params.require(:order).permit(:name, :address, :email, :phone_number, :pay_type, :postal_code, :city, :delivery_id, :price)
     end
     
     def ensure_cart_isnt_empty

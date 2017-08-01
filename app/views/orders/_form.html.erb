@@ -69,6 +69,13 @@
     </div>
   </div>
 
+    <div class="notshown">
+      <%= f.label "Zapłata", class: "col-xs-3 col-form-label" %>
+      <div class="col-xs-9">
+        <%= f.hidden_field :price, value: @cart.checkout_price %>
+        <%= f.hidden_field :delivery_id, value: @delivery.id %>
+      </div>
+    </div>
 
   <div class="actions form-group row">
     <%= f.label " " %>
