@@ -9,13 +9,15 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Recent Orders" do
-          table_for Order.order("created_at desc").limit(5) do
+          table_for Order.order("created_at desc").limit(10) do
             column :name do |order|
               link_to(order.name, admin_order_path(order))
             end
             column :created_at
             column :delivery
-            column :price
+            column :price do |order|
+              number_to_currency order.price, locale: :pl
+            end
           end
         end
       end

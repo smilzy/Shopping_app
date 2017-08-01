@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: [:new, :create, :history]
   include CurrentCart
   include ApplicationHelper
   before_action :set_cart, only: [:new, :create, :history]
@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.all.order("created_at DESC")
   end
 
   # GET /orders/1
@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
       product.quantity_update(product, qty)
     end
     @order.add_line_items_from_cart(@cart)
-    # @order.delivery_id = @cart.delivery_id
+    @order.delivery_id = @cart.delivery_id
     if user_signed_in?
       @order.user_id = current_user.id
     end
@@ -98,7 +98,7 @@ class OrdersController < ApplicationController
   end
   
   def history
-    @orders = current_user.orders
+    @orders = current_user.orders.order("created_at DESC")
   end
 
   private
@@ -110,7 +110,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :phone_number, :pay_type, :postal_code, :city)
+      params.require(:order).permit(:name, :address, :email, :phone_number, :pay_type, :postal_code, :city, :delivery_id)
     end
     
     def ensure_cart_isnt_empty

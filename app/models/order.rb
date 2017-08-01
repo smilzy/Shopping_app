@@ -16,7 +16,6 @@ class Order < ApplicationRecord
       item.cart_id = nil # Commented out for ChargesController CC payment.
       line_items << item
     end
-    delivery_id << cart.delivery_id
   end
   
   def total_price
