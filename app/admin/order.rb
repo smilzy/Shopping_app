@@ -26,7 +26,6 @@ ActiveAdmin.register Order do
     column :price, sortable: :price do |order|
       number_to_currency order.price, locale: :pl
     end
-    column :line_items
     actions
   end
 end

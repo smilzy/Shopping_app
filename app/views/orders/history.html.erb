@@ -20,6 +20,8 @@
           <td><%= order.pay_type %></td>
           <td class="listing" style="max-width: 350px; overflow: hidden;"><% order.line_items.each do |item| %><%= item.product.title %> x <%= item.quantity %> <% end %></td>
           <td><%= number_to_currency(order.total_price, locale: :pl) %></td>
+          <td class="clearlink"><%= link_to "<span class='glyphicon glyphicon-search'></span>"
+                        .html_safe, order, class: 'btn btn-xs btn-success' %></td>
         </tr>
         <% end %>
       </tbody>

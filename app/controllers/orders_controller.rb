@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create, :history]
+  skip_before_action :authorize, only: [:new, :create, :history, :show]
   include CurrentCart
   include ApplicationHelper
   before_action :set_cart, only: [:new, :create, :history]
-  before_action :ensure_cart_isnt_empty, only: [:new]
+  before_action :ensure_cart_isnt_empty, only: :new
   before_action :ensure_products_on_warehouse, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_order_belongs_to_current_user, only: :show
 
   # GET /orders
   # GET /orders.json
@@ -118,4 +119,10 @@ class OrdersController < ApplicationController
       end
     end
     
+    
+    def ensure_order_belongs_to_current_user
+      unless @order.user == current_user || admin_user_signed_in?
+        redirect_to store_index_url, notice: 'Błędny numer zamówienia'
+      end
+    end  
 end
