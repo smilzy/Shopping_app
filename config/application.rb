@@ -14,6 +14,7 @@ module Depotapp
     config.middleware.insert_before(Rack::Sendfile, Rack::Deflater)
     config.to_prepare do
       Devise::SessionsController.skip_before_action :authorize
+      Devise::RegistrationsController.skip_before_action :authorize
     end
   end
 end
